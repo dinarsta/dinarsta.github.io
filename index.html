@@ -1,139 +1,130 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dina Rosita | Portofolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dina Rosita - Portofolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
     body {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
     }
 
     header {
-      padding: 2rem;
+      background-color: #1d3557;
+      color: white;
+      padding: 2rem 0;
       text-align: center;
     }
 
     header h1 {
       font-size: 2.5rem;
-      font-weight: 600;
+      font-weight: bold;
     }
 
     header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+      font-size: 1.1rem;
     }
 
     section {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
+      padding: 2rem 1rem;
     }
 
-    .porto {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
+    .card-custom {
+      border: 1px solid #ddd;
+      transition: transform 0.3s ease;
       background-color: white;
-      color: #333;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
 
-    .card h3 {
-      margin-bottom: 0.5rem;
+    .card-title {
       font-size: 1.2rem;
-      color: #2575fc;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .card a {
-      text-decoration: none;
-      background: #2575fc;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
       font-weight: 600;
-      transition: background 0.3s ease;
+      color: #1d3557;
     }
 
-    .card a:hover {
-      background: #6a11cb;
+    .btn-link {
+      background-color: #1d3557;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .btn-link:hover {
+      background-color: #457b9d;
+      color: white;
     }
 
     footer {
+      background-color: #1d3557;
+      color: white;
       text-align: center;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      margin-top: auto;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      .card {
-        padding: 1rem;
-      }
+      padding: 1rem 0;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Dina Rosita</h1>
-    <p>Web Developer | UI/UX Enthusiast | Mahasiswi Sistem Informasi</p>
-  </header>
 
-  <section>
-    <h2 style="text-align:center; margin-bottom:1.5rem;">🌐 Portofolio Website</h2>
-    <div class="porto">
-      <div class="card">
-        <h3>Propertree.id</h3>
-        <p>Website properti dengan UI interaktif menggunakan React.js dan Next.js</p>
-        <a href="https://propertree.id" target="_blank">Kunjungi</a>
-      </div>
-      <div class="card">
-        <h3>Landing Page PMU</h3>
-        <p>Redesain dan optimasi SEO untuk website kampus dan bisnis lokal</p>
-        <a href="#" target="_blank">Demo</a>
-      </div>
-      <div class="card">
-        <h3>Aplikasi Gelang & Lanyard</h3>
-        <p>Upload desain & generate PDF untuk cetak souvenir event</p>
-        <a href="#" target="_blank">Lihat Proyek</a>
+<header>
+  <h1>Dina Rosita</h1>
+  <p>Web Developer | UI/UX Enthusiast | Laravel & React Developer</p>
+</header>
+
+<section class="container">
+  <h2 class="text-center mb-4">Tentang Saya</h2>
+  <p class="text-center mx-auto" style="max-width: 700px;">
+    Saya seorang pengembang web yang fokus pada pengalaman pengguna yang intuitif dan efisien.
+    Berpengalaman membangun aplikasi web berbasis Laravel dan React, saya senang menggabungkan teknologi dan kreativitas dalam setiap project.
+  </p>
+</section>
+
+<section class="container">
+  <h2 class="text-center mb-4">Portofolio Website</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card card-custom h-100">
+        <div class="card-body">
+          <h5 class="card-title">Propertree.id</h5>
+          <p class="card-text">Situs properti yang dibangun menggunakan React dan Next.js untuk pengalaman pengguna yang cepat dan modern.</p>
+          <a href="https://propertree.id" target="_blank" class="btn-link">Lihat Website</a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <footer>
-    &copy; 2025 Dina Rosita · Made with ❤️ and HTML+CSS
-  </footer>
+    <div class="col">
+      <div class="card card-custom h-100">
+        <div class="card-body">
+          <h5 class="card-title">Gelang & Lanyard Designer</h5>
+          <p class="card-text">Aplikasi berbasis Laravel dengan fitur drag-and-drop seperti Canva untuk mendesain tiket konser atau lanyard acara.</p>
+          <a href="#" target="_blank" class="btn-link">Lihat Website</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card card-custom h-100">
+        <div class="card-body">
+          <h5 class="card-title">PMU & Samara Blog</h5>
+          <p class="card-text">Website blog dan landing page untuk promosi digital, strategi iklan, dan edukasi pasar.</p>
+          <a href="#" target="_blank" class="btn-link">Lihat Website</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Dina Rosita. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
