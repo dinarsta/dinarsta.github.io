@@ -1,1 +1,295 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dina Rosita - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fff5f7, #ede7f6);
+            color: #4a4a4a;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #f8e1e9;
+            color: #5c4033;
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        header .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            margin-bottom: 20px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        header .profile-img:hover {
+            transform: scale(1.05);
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            margin: 0;
+            letter-spacing: 1.5px;
+        }
+        header p {
+            font-size: 1.1em;
+            margin: 8px 0;
+        }
+        header p i {
+            margin-right: 10px;
+            color: #d8a7b1;
+        }
+        section {
+            background: #fff;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #b76e79;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e8ccd7;
+            padding-bottom: 10px;
+        }
+        section h2 i {
+            margin-right: 12px;
+            color: #d8a7b1;
+        }
+        .experience, .education, .project {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-left: 4px solid #e8ccd7;
+            transition: background 0.3s ease;
+        }
+        .experience:hover, .education:hover, .project:hover {
+            background: #f9f1f4;
+        }
+        .experience h3, .education h3, .project h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            color: #b76e79;
+            margin: 0;
+        }
+        .experience h3 i, .education h3 i, .project h3 i {
+            margin-right: 10px;
+        }
+        .skills ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .skills ul li {
+            background: #d8a7b1;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skills ul li i {
+            margin-right: 8px;
+        }
+        .skills ul li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .portfolio-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .portfolio-card {
+            background: #f9e4e8;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .portfolio-card a {
+            color: #b76e79;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-family: 'Playfair Display', serif;
+        }
+        .portfolio-card a i {
+            margin-right: 10px;
+            color: #d8a7b1;
+        }
+        .portfolio-card p {
+            font-size: 0.9em;
+            color: #5c4033;
+            margin-top: 10px;
+        }
+        .contact a {
+            color: #b76e79;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+        .contact a i {
+            margin-right: 8px;
+            color: #d8a7b1;
+        }
+        .contact a:hover {
+            color: #8e4b5e;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .portfolio-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="src/dina.jpg" alt="Dina Rosita Profile" class="profile-img">
+            <h1>Dina Rosita</h1>
+            <p><i class="fas fa-code"></i>Web Developer | Universitas Terbuka</p>
+            <p><i class="fas fa-map-marker-alt"></i>Pancoran Mas, West Java, Indonesia</p>
+            <p><i class="fas fa-envelope"></i><a href="mailto:dina@example.com" style="color: #5c4033;">Let's Connect!</a></p>
+        </header>
+
+        <section class="about">
+            <h2><i class="fas fa-user"></i>About Me</h2>
+            <p>I'm a passionate Information Systems student at Universitas Terbuka with a Software Engineering background from SMK Taruna Bhakti. I specialize in crafting intuitive, user-friendly web applications and am dedicated to creating seamless digital experiences through innovative web development.</p>
+        </section>
+
+        <section class="experience">
+            <h2><i class="fas fa-briefcase"></i>Experience</h2>
+            <div class="experience">
+                <h3><i class="fas fa-laptop-code"></i>Web Developer - PT Primanusa Mukti Utama</h3>
+                <p>Mar 2024 - Present | Depok, West Java</p>
+                <p>Building responsive web solutions with a focus on performance and user experience.</p>
+                <p>Skills: Web Development, Responsive Design</p>
+            </div>
+            <div class="experience">
+                <h3><i class="fas fa-paint-brush"></i>Frontend Web Developer - Propertree.id (Internship)</h3>
+                <p>Nov 2023 - Jan 2024 | Depok, West Java</p>
+                <p>Developed dynamic front-end components using TypeScript and Figma.</p>
+                <p>Skills: TypeScript, Figma, Responsive Design</p>
+            </div>
+            <div class="experience">
+                <h3><i class="fas fa-vial"></i>Frontend Developer - PT Ciptadra Softindo (Internship)</h3>
+                <p>Sep 2022 - Mar 2023 | Depok, West Java</p>
+                <p>Contributed to test automation and front-end development using Selenium.</p>
+                <p>Skills: Test Automation, Selenium</p>
+            </div>
+        </section>
+
+        <section class="education">
+            <h2><i class="fas fa-graduation-cap"></i>Education</h2>
+            <div class="education">
+                <h3>Universitas Terbuka</h3>
+                <p>Bachelor of Information Systems | Aug 2023 - Aug 2027</p>
+                <p>Skills: Java, R Programming</p>
+            </div>
+            <div class="education">
+                <h3>SMK Taruna Bhakti</h3>
+                <p>Software Engineering | 2020 - 2023</p>
+                <p>Skills: Laravel, Bootstrap</p>
+            </div>
+        </section>
+
+        <section class="skills">
+            <h2><i class="fas fa-tools"></i>Top Skills</h2>
+            <ul>
+                <li><i class="fas fa-desktop"></i>Front-End Development</li>
+                <li><i class="fab fa-python"></i>Python</li>
+                <li><i class="fas fa-layer-group"></i>Laravel</li>
+                <li><i class="fab fa-js"></i>JavaScript</li>
+                <li><i class="fas fa-rocket"></i>Next.js</li>
+                <li><i class="fas fa-paint-roller"></i>Tailwind CSS</li>
+                <li><i class="fab fa-bootstrap"></i>Bootstrap</li>
+                <li><i class="fab fa-figma"></i>Figma</li>
+                <li><i class="fas fa-vial"></i>Selenium</li>
+            </ul>
+        </section>
+
+        <section class="projects">
+            <h2><i class="fas fa-project-diagram"></i>Projects</h2>
+            <div class="project">
+                <h3><i class="fas fa-shopping-cart"></i>Web-Based Order Management System</h3>
+                <p>Oct 2024 - Present | PT Primanusa Mukti Utama</p>
+                <p>A responsive system for real-time order tracking and efficient operations.</p>
+                <p>Skills: Laravel, JavaScript</p>
+            </div>
+            <div class="project">
+                <h3><i class="fas fa-home"></i>Gethome.id Frontend</h3>
+                <p>Nov 2023 - Jan 2024 | Propertree.id</p>
+                <p>Built a responsive front-end with Next.js and Tailwind CSS, integrating a RESTful API.</p>
+                <p>Skills: Next.js, JavaScript, Tailwind CSS</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2><i class="fas fa-address-book"></i>Contact & Portfolio</h2>
+      <div class="contact-info">
+  <p>
+    <i class="fas fa-envelope"></i>
+    <a href="mailto:rositadina816@gmail.com" class="ms-2">rositadina816@gmail.com</a>
+  </p>
+  <p>
+    <i class="fab fa-linkedin"></i>
+    <a href="https://www.linkedin.com/in/dinarsta/" target="_blank" class="ms-2">linkedin.com/in/dinarsta/</a>
+  </p>
+</div>
+
+            <h3><i class="fas fa-star"></i>Explore My Work!</h3>
+            <div class="portfolio-cards">
+                <div class="portfolio-card">
+                    <a href="https://github.com/dinarosita" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+                    <p>Explore my code repositories and open-source contributions.</p>
+                </div>
+                <div class="portfolio-card">
+                    <a href="https://samara-inti.com" target="_blank"><i class="fas fa-globe"></i>Samara Inti</a>
+                    <p>Professional web development and digital invitation services.</p>
+                </div>
+                <div class="portfolio-card">
+                    <a href="https://gethome.id" target="_blank"><i class="fas fa-home"></i>Gethome.id</a>
+                    <p>Frontend work for a property platform with dynamic features.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
