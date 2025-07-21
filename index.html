@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dina Rosita - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #fce4ec, #e1bee7);
-            color: #333;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #fff5f7, #ede7f6);
+            color: #4a4a4a;
+            line-height: 1.8;
         }
         .container {
             max-width: 1100px;
@@ -20,86 +21,98 @@
             padding: 20px;
         }
         header {
-            background: #ff80ab;
-            color: white;
+            background: #f8e1e9;
+            color: #5c4033;
             text-align: center;
-            padding: 40px 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 50px 20px;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
             margin-bottom: 30px;
         }
         header .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            border: 5px solid #fff;
-            margin-bottom: 15px;
+            border: 6px solid #fff;
+            margin-bottom: 20px;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        header .profile-img:hover {
+            transform: scale(1.05);
         }
         header h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 2.8em;
             margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
         header p {
-            font-size: 1.2em;
-            margin: 5px 0;
+            font-size: 1.1em;
+            margin: 8px 0;
         }
         header p i {
-            margin-right: 8px;
-            color: #f8bbd0;
+            margin-right: 10px;
+            color: #d8a7b1;
         }
         section {
-            background: white;
+            background: #fff;
             padding: 30px;
             margin: 20px 0;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
         section h2 {
-            color: #c2185b;
+            font-family: 'Playfair Display', serif;
+            color: #b76e79;
             font-size: 2em;
             margin-bottom: 20px;
-            border-bottom: 3px solid #f48fb1;
+            border-bottom: 2px solid #e8ccd7;
             padding-bottom: 10px;
         }
         section h2 i {
-            margin-right: 10px;
+            margin-right: 12px;
+            color: #d8a7b1;
         }
         .experience, .education, .project {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             padding: 15px;
-            border-left: 4px solid #f06292;
+            border-left: 4px solid #e8ccd7;
+            transition: background 0.3s ease;
+        }
+        .experience:hover, .education:hover, .project:hover {
+            background: #f9f1f4;
         }
         .experience h3, .education h3, .project h3 {
-            font-size: 1.5em;
-            color: #c2185b;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            color: #b76e79;
             margin: 0;
         }
         .experience h3 i, .education h3 i, .project h3 i {
-            margin-right: 8px;
+            margin-right: 10px;
         }
         .skills ul {
             list-style: none;
             padding: 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
         }
         .skills ul li {
-            background: #f06292;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
+            background: #d8a7b1;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 25px;
             font-size: 0.9em;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .skills ul li i {
             margin-right: 8px;
         }
         .skills ul li:hover {
-            transform: scale(1.1);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .portfolio-cards {
             display: grid;
@@ -108,41 +121,46 @@
             margin-top: 20px;
         }
         .portfolio-card {
-            background: #f8bbd0;
+            background: #f9e4e8;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
         .portfolio-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
         .portfolio-card a {
-            color: #c2185b;
+            color: #b76e79;
             font-weight: bold;
             text-decoration: none;
             font-size: 1.2em;
+            font-family: 'Playfair Display', serif;
         }
         .portfolio-card a i {
-            margin-right: 8px;
+            margin-right: 10px;
+            color: #d8a7b1;
         }
         .portfolio-card p {
             font-size: 0.9em;
-            color: #444;
+            color: #5c4033;
+            margin-top: 10px;
         }
         .contact a {
-            color: #c2185b;
+            color: #b76e79;
             text-decoration: none;
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 15px;
+            transition: color 0.3s ease;
         }
         .contact a i {
             margin-right: 8px;
+            color: #d8a7b1;
         }
         .contact a:hover {
-            text-decoration: underline;
+            color: #8e4b5e;
         }
         @media (max-width: 600px) {
             header h1 {
@@ -153,7 +171,7 @@
                 height: 100px;
             }
             .container {
-                padding: 10px;
+                padding: 15px;
             }
             .portfolio-cards {
                 grid-template-columns: 1fr;
@@ -164,16 +182,16 @@
 <body>
     <div class="container">
         <header>
-            <img src="https://via.placeholder.com/150" alt="Dina Rosita Profile" class="profile-img">
+            <img src="src/dina.jpg" alt="Dina Rosita Profile" class="profile-img">
             <h1>Dina Rosita</h1>
             <p><i class="fas fa-code"></i>Web Developer | Universitas Terbuka</p>
             <p><i class="fas fa-map-marker-alt"></i>Pancoran Mas, West Java, Indonesia</p>
-            <p><i class="fas fa-envelope"></i><a href="mailto:dina@example.com" style="color: white;">Let's Connect!</a></p>
+            <p><i class="fas fa-envelope"></i><a href="mailto:dina@example.com" style="color: #5c4033;">Let's Connect!</a></p>
         </header>
 
         <section class="about">
             <h2><i class="fas fa-user"></i>About Me</h2>
-            <p>I'm a passionate Information Systems student at Universitas Terbuka with a Software Engineering background from SMK Taruna Bhakti. I love crafting intuitive, user-friendly web applications and am dedicated to delivering seamless digital experiences through innovative web development.</p>
+            <p>I'm a passionate Information Systems student at Universitas Terbuka with a Software Engineering background from SMK Taruna Bhakti. I specialize in crafting intuitive, user-friendly web applications and am dedicated to creating seamless digital experiences through innovative web development.</p>
         </section>
 
         <section class="experience">
@@ -222,7 +240,7 @@
                 <li><i class="fas fa-rocket"></i>Next.js</li>
                 <li><i class="fas fa-paint-roller"></i>Tailwind CSS</li>
                 <li><i class="fab fa-bootstrap"></i>Bootstrap</li>
-                <li><i class="fab fa-figma"></i>Figma</li患者
+                <li><i class="fab fa-figma"></i>Figma</li>
                 <li><i class="fas fa-vial"></i>Selenium</li>
             </ul>
         </section>
@@ -245,13 +263,22 @@
 
         <section class="contact">
             <h2><i class="fas fa-address-book"></i>Contact & Portfolio</h2>
-            <p><i class="fas fa-envelope"></i>Email: <a href="mailto:dina@example.com">dina@example.com</a></p>
-            <p><i class="fab fa-linkedin"></i>LinkedIn: <a href="https://linkedin.com/in/dinarosita" target="_blank">linkedin.com/in/dinarosita</a></p>
-            <p><i class="fas fa-star"></i>Explore my work below!</p>
+      <div class="contact-info">
+  <p>
+    <i class="fas fa-envelope"></i>
+    <a href="mailto:rositadina816@gmail.com" class="ms-2">rositadina816@gmail.com</a>
+  </p>
+  <p>
+    <i class="fab fa-linkedin"></i>
+    <a href="https://www.linkedin.com/in/dinarsta/" target="_blank" class="ms-2">linkedin.com/in/dinarsta/</a>
+  </p>
+</div>
+
+            <h3><i class="fas fa-star"></i>Explore My Work!</h3>
             <div class="portfolio-cards">
                 <div class="portfolio-card">
                     <a href="https://github.com/dinarosita" target="_blank"><i class="fab fa-github"></i>GitHub</a>
-                    <p>Check out my code repositories and open-source contributions.</p>
+                    <p>Explore my code repositories and open-source contributions.</p>
                 </div>
                 <div class="portfolio-card">
                     <a href="https://samara-inti.com" target="_blank"><i class="fas fa-globe"></i>Samara Inti</a>
