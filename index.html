@@ -1,135 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dina Rosita | Web Developer</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dina Rosita | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <style>
     body {
-      background: linear-gradient(135deg, #f2f7ff, #ffffff);
       font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f9fafb, #f0f4f8);
+      color: #333;
     }
-    .hero {
-      background: linear-gradient(90deg, #007bff, #6610f2);
+    header {
+      background: linear-gradient(120deg, #6f42c1, #d63384);
       color: white;
       padding: 60px 0;
       text-align: center;
     }
-    .profile-img {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 5px solid white;
-      margin-top: -70px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
     }
-    .section-title {
-      border-left: 5px solid #6610f2;
-      padding-left: 15px;
-      font-weight: 600;
-      color: #333;
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    section {
+      padding: 60px 15px;
+    }
+    .portfolio-item {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
     }
     footer {
-      background-color: #f1f1f1;
-      padding: 20px 0;
+      background: #343a40;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    a {
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero -->
-  <div class="hero">
-    <h1 class="display-5 fw-bold">Dina Rosita <span class="badge bg-light text-dark">She/Her</span></h1>
-    <p class="lead">Web Developer @ PT Primanusa Mukti Utama</p>
-    <p>Information Systems Student | Universitas Terbuka</p>
-  </div>
-
-  <!-- Profile -->
-  <div class="container text-center">
-    <img src="https://avatars.githubusercontent.com/u/your-github-id" alt="Dina Rosita" class="profile-img mt-3 mb-4" />
-    <p>Pancoran Mas, West Java, Indonesia · 500+ connections</p>
-    <a href="mailto:your-email@example.com" class="btn btn-outline-primary btn-sm">📩 Contact Me</a>
-  </div>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Dina Rosita</h1>
+      <p>Web Developer | Frontend Enthusiast</p>
+    </div>
+  </header>
 
   <!-- About -->
-  <div class="container my-5">
-    <h3 class="section-title">About Me</h3>
-    <p>
-      I am an undergraduate student of Information Systems at Universitas Terbuka, with a strong background in Software Engineering from SMK Taruna Bhakti.
-      My journey has been marked by creating intuitive and user-friendly web applications. I am strongly committed to innovation in web development,
-      aiming to ensure seamless user experiences.
-    </p>
-  </div>
-
-  <!-- Experience -->
-  <div class="container mb-5">
-    <h3 class="section-title">Experience</h3>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <strong>Web Developer</strong> — PT Primanusa Mukti Utama<br />
-        <small>Mar 2024 – Present | Depok</small>
-      </li>
-      <li class="list-group-item">
-        <strong>Frontend Developer</strong> — Propertree.id<br />
-        <small>Nov 2023 – Jan 2024</small>
-      </li>
-      <li class="list-group-item">
-        <strong>Frontend Developer</strong> — PT Ciptadra Softindo<br />
-        <small>Sep 2022 – Mar 2023</small>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Education -->
-  <div class="container mb-5">
-    <h3 class="section-title">Education</h3>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <strong>Universitas Terbuka</strong> — B.Sc. Information Systems (2023–2027)
-      </li>
-      <li class="list-group-item">
-        <strong>SMK Taruna Bhakti</strong> — Software Engineering (2020–2023)
-      </li>
-    </ul>
-  </div>
-
-  <!-- Skills & Services -->
-  <div class="container mb-5">
-    <h3 class="section-title">Skills & Services</h3>
-    <p><strong>Skills:</strong> Front-End Development · Laravel · Python · HTML · Bootstrap · Tailwind CSS · REST API</p>
-    <p>
-      <strong>Services:</strong><br />
-      Website development, business sites, custom web apps, and digital invitations (RSVP, maps, countdowns, photo gallery).
-    </p>
-  </div>
+  <section id="about" class="text-center">
+    <div class="container">
+      <h2 class="mb-4">Tentang Saya</h2>
+      <p class="lead">Saya adalah seorang developer yang berfokus pada pengembangan aplikasi web yang responsif, interaktif, dan ramah pengguna. Saya suka menciptakan pengalaman digital yang memikat dan fungsional.</p>
+    </div>
+  </section>
 
   <!-- Portfolio -->
-  <div class="container mb-5">
-    <h3 class="section-title">📁 Web Portfolio</h3>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <strong>Order Management System</strong><br />
-        <small>Laravel + JavaScript | PT Primanusa Mukti Utama</small><br />
-        <a href="https://github.com/dinarsta/kuda" target="_blank">View on GitHub</a>
-      </li>
-      <li class="list-group-item">
-        <strong>GetHome.id Frontend</strong><br />
-        <small>Next.js + Tailwind CSS | Propertree.id</small><br />
-        <a href="https://gethome.id" target="_blank">https://gethome.id</a>
-      </li>
-      <li class="list-group-item">
-        <strong>Undangan Digital Samara Inti</strong><br />
-        <small>Custom invitation builder with RSVP & gallery</small><br />
-        <a href="https://samarainti.com" target="_blank">https://samarainti.com</a>
-      </li>
-    </ul>
-  </div>
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="text-center mb-5">Portofolio Website</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <a href="https://dinarsta.github.io/project1" target="_blank" class="text-dark">
+            <div class="card portfolio-item h-100 shadow-sm">
+              <img src="https://source.unsplash.com/400x300/?website,design" class="card-img-top" alt="Project 1">
+              <div class="card-body">
+                <h5 class="card-title">Project 1</h5>
+                <p class="card-text">Desain tampilan website company profile modern.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <a href="https://dinarsta.github.io/project2" target="_blank" class="text-dark">
+            <div class="card portfolio-item h-100 shadow-sm">
+              <img src="https://source.unsplash.com/400x300/?technology,app" class="card-img-top" alt="Project 2">
+              <div class="card-body">
+                <h5 class="card-title">Project 2</h5>
+                <p class="card-text">Website sistem drag-and-drop desain gelang & lanyard.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <a href="https://dinarsta.github.io/project3" target="_blank" class="text-dark">
+            <div class="card portfolio-item h-100 shadow-sm">
+              <img src="https://source.unsplash.com/400x300/?dashboard,analytics" class="card-img-top" alt="Project 3">
+              <div class="card-body">
+                <h5 class="card-title">Project 3</h5>
+                <p class="card-text">Dashboard inventaris dengan Bootstrap & Laravel.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-light text-center">
+    <div class="container">
+      <h2 class="mb-4">Kontak Saya</h2>
+      <p class="lead">Email: <a href="mailto:dina@example.com">dina@example.com</a> | GitHub: <a href="https://github.com/dinarsta" target="_blank">dinarsta</a></p>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="text-center">
-    <p>&copy; 2025 Dina Rosita | Built with 💙 using Bootstrap</p>
+  <footer>
+    <p>&copy; 2025 Dina Rosita</p>
   </footer>
 
 </body>
