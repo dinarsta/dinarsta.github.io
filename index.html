@@ -1,56 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dina Rosita - Portfolio</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-        <link rel="icon" href="src/dina.jpg" type="image/png">
+    <link rel="icon" href="src/dina.jpg" type="image/png">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary-color: #a91b2e; /* Bold crimson */
-            --secondary-color: #6b3fa0; /* Deep purple */
-            --accent-color: #ff6f61; /* Vibrant coral */
-            --gold-accent: #f4b400; /* Bold gold */
-            --bg-light: #f8f1f1; /* Crisp off-white */
-            --bg-dark: #1a1a1a; /* Deep charcoal */
-            --text-dark: #1f1f1f; /* Strong black */
-            --text-secondary: #4a2c2c; /* Dark taupe */
-            --text-dark-mode: #ffffff; /* White for dark mode */
-            --gold-dark-mode: #e6a800; /* Deep amber for dark mode */
+            --primary-color: #a91b2e;
+            /* Bold crimson */
+            --secondary-color: #6b3fa0;
+            /* Deep purple */
+            --accent-color: #ff6f61;
+            /* Vibrant coral */
+            --gold-accent: #f4b400;
+            /* Bold gold */
+            --bg-light: #f8f1f1;
+            /* Crisp off-white */
+            --bg-dark: #1a1a1a;
+            /* Deep charcoal */
+            --text-dark: #1f1f1f;
+            /* Strong black */
+            --text-secondary: #4a2c2c;
+            /* Dark taupe */
+            --text-dark-mode: #ffffff;
+            /* White for dark mode */
+            --gold-dark-mode: #e6a800;
+            /* Deep amber for dark mode */
         }
+
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, var(--bg-light), #f0e6e6);
             color: var(--text-dark);
             transition: background 0.3s, color 0.3s;
         }
+
         body.dark-mode {
             background: var(--bg-dark);
             color: var(--text-dark-mode);
         }
+
         .navbar {
             background: var(--bg-light);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .dark-mode .navbar {
             background: #2a2a2a;
-            box-shadow: 0 2px 4px rgba(255,255,255,0.1);
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
         }
-        .navbar-brand, .nav-link {
+
+        .navbar-brand,
+        .nav-link {
             color: var(--primary-color) !important;
             font-family: 'Playfair Display', serif;
             position: relative;
             transition: color 0.3s;
         }
-        .dark-mode .navbar-brand, .dark-mode .nav-link {
+
+        .dark-mode .navbar-brand,
+        .dark-mode .nav-link {
             color: var(--text-dark-mode) !important;
         }
+
         .nav-link:hover::after {
             content: '';
             position: absolute;
@@ -61,9 +84,11 @@
             background-color: var(--gold-accent);
             transition: background-color 0.3s;
         }
+
         .dark-mode .nav-link:hover::after {
             background-color: var(--gold-dark-mode);
         }
+
         .profile-img {
             width: 120px;
             height: 120px;
@@ -72,34 +97,59 @@
             border-radius: 50%;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .profile-img:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(169, 27, 46, 0.5);
         }
-        h1, h2, h3, h4, h5, h6, p, li, a, span {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        li,
+        a,
+        span {
             font-family: 'Playfair Display', serif;
             color: var(--primary-color);
         }
-        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6, 
-        .dark-mode p, .dark-mode li, .dark-mode a, .dark-mode span {
+
+        .dark-mode h1,
+        .dark-mode h2,
+        .dark-mode h3,
+        .dark-mode h4,
+        .dark-mode h5,
+        .dark-mode h6,
+        .dark-mode p,
+        .dark-mode li,
+        .dark-mode a,
+        .dark-mode span {
             color: var(--text-dark-mode);
         }
+
         .card {
             border: none;
             border-radius: 12px;
             background: #fff;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .dark-mode .card {
             background: #2a2a2a;
         }
+
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 15px rgba(169, 27, 46, 0.3);
         }
+
         .project-card .card-title {
             font-weight: 600;
         }
+
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
@@ -107,16 +157,19 @@
             border-radius: 25px;
             color: #fff;
         }
+
         .dark-mode .btn-primary {
             background-color: #8a1625;
             border-color: #8a1625;
             color: var(--text-dark-mode);
         }
+
         .btn-primary:hover {
             background-color: #8a1625;
             border-color: #8a1625;
             color: #fff;
         }
+
         .badge {
             background-color: var(--secondary-color);
             color: #fff;
@@ -124,70 +177,102 @@
             padding: 6px 12px;
             font-size: 0.85em;
         }
+
         .dark-mode .badge {
             background-color: #5a3385;
             color: var(--text-dark-mode);
         }
+
         .theme-toggle {
             cursor: pointer;
             color: var(--gold-accent);
         }
+
         .dark-mode .theme-toggle {
             color: var(--gold-dark-mode);
         }
+
         .section-title {
             font-weight: 600;
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 10px;
         }
+
         .dark-mode .section-title {
             border-bottom-color: #e65b50;
         }
+
         .text-muted {
             color: var(--text-secondary) !important;
         }
+
         .dark-mode .text-muted {
             color: var(--text-dark-mode) !important;
         }
+
         .contact-link {
             color: var(--primary-color);
             text-decoration: none;
             font-family: 'Playfair Display', serif;
         }
+
         .dark-mode .contact-link {
             color: var(--text-dark-mode);
         }
+
         .contact-link:hover {
             color: #8a1625;
             text-decoration: underline;
         }
+
         .fa-icon {
             color: var(--gold-accent);
             margin-right: 8px;
         }
+
         .dark-mode .fa-icon {
             color: var(--gold-dark-mode);
         }
+
         @media (max-width: 576px) {
             .profile-img {
                 width: 80px;
                 height: 80px;
             }
+
             .display-5 {
                 font-size: 1.5rem;
             }
+
             .section-title {
                 font-size: 1.5rem;
+            }
+
+            .project-card {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .project-card .card-body {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .project-card .mt-auto {
+                margin-top: auto;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">Dina Rosita</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -214,14 +299,18 @@
             <h1 class="display-5 fw-bold">Dina Rosita</h1>
             <p class="lead"><i class="fas fa-code fa-icon"></i>Web Developer | Universitas Terbuka</p>
             <p><i class="fas fa-map-marker-alt fa-icon"></i>Pancoran Mas, West Java, Indonesia</p>
-            <p><i class="fas fa-envelope fa-icon"></i><a href="mailto:dina@example.com" class="contact-link">Let's Connect!</a></p>
+            <p><i class="fas fa-envelope fa-icon"></i><a href="mailto:dina@example.com" class="contact-link">Let's
+                    Connect!</a></p>
         </header>
 
         <!-- About -->
         <section id="about" class="mb-5">
             <h2 class="section-title mb-3"><i class="fas fa-heart fa-icon"></i>About Me</h2>
             <div class="card p-4">
-                <p>I'm a passionate Information Systems student at Universitas Terbuka with a Software Engineering background from SMK Taruna Bhakti. I specialize in crafting intuitive, user-friendly web applications and am dedicated to creating seamless digital experiences through innovative web development.</p>
+                <p>I'm a passionate Information Systems student at Universitas Terbuka with a Software Engineering
+                    background from SMK Taruna Bhakti. I specialize in crafting intuitive, user-friendly web
+                    applications and am dedicated to creating seamless digital experiences through innovative web
+                    development.</p>
             </div>
         </section>
 
@@ -235,13 +324,15 @@
                 <p><strong>Skills:</strong> Web Development, Responsive Design</p>
             </div>
             <div class="card mb-3 p-3">
-                <h3 class="h5"><i class="fas fa-paint-brush fa-icon"></i>Frontend Web Developer - Propertree.id (Internship)</h3>
+                <h3 class="h5"><i class="fas fa-paint-brush fa-icon"></i>Frontend Web Developer - Propertree.id
+                    (Internship)</h3>
                 <p class="text-muted mb-1">Nov 2023 - Jan 2024 | Depok, West Java</p>
                 <p>Developed dynamic front-end components using TypeScript and Figma.</p>
                 <p><strong>Skills:</strong> TypeScript, Figma, Responsive Design</p>
             </div>
             <div class="card mb-3 p-3">
-                <h3 class="h5"><i class="fas fa-vial fa-icon"></i>Frontend Developer - PT Ciptadra Softindo (Internship)</h3>
+                <h3 class="h5"><i class="fas fa-vial fa-icon"></i>Frontend Developer - PT Ciptadra Softindo (Internship)
+                </h3>
                 <p class="text-muted mb-1">Sep 2022 - Mar 2023 | Depok, West Java</p>
                 <p>Contributed to test automation and front-end development using Selenium.</p>
                 <p><strong>Skills:</strong> Test Automation, Selenium</p>
@@ -262,178 +353,204 @@
         </section>
 
         <!-- Skills -->
-    <section id="skills" class="mb-5">
-    <h2 class="section-title mb-3"><i class="fas fa-star fa-icon"></i>Top Skills</h2>
-    <div class="card p-3">
-        <ul class="list-inline mb-0">
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fas fa-desktop fa-icon"></i>Front-End Development</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fas fa-layer-group fa-icon"></i>Laravel</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fab fa-js fa-icon"></i>JavaScript</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fab fa-bootstrap fa-icon"></i>Bootstrap</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fab fa-html5 fa-icon"></i>HTML</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fas fa-database fa-icon"></i>MySQL</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fas fa-rocket fa-icon"></i>Next.js</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fab fa-react fa-icon"></i>React.js</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fas fa-paint-roller fa-icon"></i>Tailwind CSS</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fab fa-wordpress fa-icon"></i>WordPress</span>
-            </li>
-            <li class="list-inline-item mb-2">
-                <span class="badge"><i class="fab fa-figma fa-icon"></i>Figma</span>
-            </li>
-        </ul>
+        <section id="skills" class="mb-5">
+            <h2 class="section-title mb-3"><i class="fas fa-star fa-icon"></i>Top Skills</h2>
+            <div class="card p-3">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fas fa-desktop fa-icon"></i>Front-End Development</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fas fa-layer-group fa-icon"></i>Laravel</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fab fa-js fa-icon"></i>JavaScript</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fab fa-bootstrap fa-icon"></i>Bootstrap</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fab fa-html5 fa-icon"></i>HTML</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fas fa-database fa-icon"></i>MySQL</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fas fa-rocket fa-icon"></i>Next.js</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fab fa-react fa-icon"></i>React.js</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fas fa-paint-roller fa-icon"></i>Tailwind CSS</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fab fa-wordpress fa-icon"></i>WordPress</span>
+                    </li>
+                    <li class="list-inline-item mb-2">
+                        <span class="badge"><i class="fab fa-figma fa-icon"></i>Figma</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="mb-5">
+            <h2 class="section-title mb-3"><i class="fas fa-gem fa-icon"></i>Selected Projects</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 align-items-stretch">
+
+                <!-- Inventory Management Application -->
+                <div class="col">
+                    <div class="card project-card p-3 h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title"><i class="fas fa-boxes fa-icon"></i>Inventory Management Application
+                            </h3>
+                            <p class="text-muted mb-1">Jun 2025 – Present | PT Primanusa Mukti Utama</p>
+                            <ul class="mb-2">
+                                <li>Developed an inventory management system with <strong>import/export
+                                        functionality</strong>.</li>
+                                <li>Integrated stock tables for <strong>incoming and outgoing goods</strong>.</li>
+                                <li>Implemented <strong>barcode scanning</strong> for both incoming and outgoing items.
+                                </li>
+                                <li>Added <strong>transaction history tracking</strong> for detailed monitoring.</li>
+                                <li>Included an <strong>activity log</strong> to record all user actions for auditing
+                                    purposes.</li>
+                                <li>Ensured accurate data management and efficient stock control processes.</li>
+                            </ul>
+                            <p><strong>Skills:</strong> Laravel, JavaScript, HTML, Bootstrap, MySQL</p>
+                            <div class="mt-auto">
+                                <!-- <a href="#" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i> View Project</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web-Based Order Management System -->
+                <div class="col">
+                    <div class="card project-card p-3 h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title"><i class="fas fa-shopping-cart fa-icon"></i>Web-Based Order
+                                Management System</h3>
+                            <p class="text-muted mb-1">Oct 2024 – Present | PT Primanusa Mukti Utama</p>
+                            <ul class="mb-2">
+                                <li>Developed a responsive, multi-user order management app with
+                                    <strong>Laravel</strong> & <strong>JavaScript</strong>.</li>
+                                <li>Integrated <strong>real-time tracking</strong>, <strong>dashboard
+                                        analytics</strong>, and mobile optimization.</li>
+                                <li>Streamlined order input, status updates, reporting, and automated notifications.
+                                </li>
+                                <li>Designed user-friendly UI with <strong>Bootstrap</strong> for better usability.</li>
+                                <li>Implemented <strong>role-based access</strong> to secure admin, staff, and client
+                                    operations.</li>
+                                <li>Utilized <strong>MySQL</strong> for structured data storage and fast queries.</li>
+                            </ul>
+                            <p><strong>Skills:</strong> Laravel, JavaScript, Bootstrap, MySQL</p>
+                            <div class="mt-auto">
+                                <a href="https://shop.primanusamuktiutama.web.id" target="_blank"
+                                    class="btn btn-primary btn-sm">
+                                    <i class="fas fa-link fa-icon"></i> View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Profile – PT Primanusa Mukti Utama -->
+                <div class="col">
+                    <div class="card project-card p-3 h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title"><i class="fas fa-globe fa-icon"></i>Company Profile – PT Primanusa
+                                Mukti Utama</h3>
+                            <p class="text-muted mb-1">2024 – Present</p>
+                            <ul class="mb-2">
+                                <li>Developed a modern, responsive <strong>company profile website</strong> using
+                                    <strong>WordPress</strong>.</li>
+                                <li>Designed and structured <strong>service pages</strong> to enhance clarity and
+                                    navigation.</li>
+                                <li>Optimized content structure and metadata for <strong>SEO performance</strong>.</li>
+                                <li>Ensured fast load times and mobile responsiveness for better user experience.</li>
+                                <li>Aligned design and content with the company’s branding and marketing goals.</li>
+                                <li>Integrated advanced analytics to monitor visitor engagement and inform continuous
+                                    content refinement.</li>
+                            </ul>
+                            <p><strong>Skills:</strong> WordPress</p>
+                            <div class="mt-auto">
+                                <a href="https://primanusamuktiutama.com/" target="_blank"
+                                    class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i> View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!-- Company Profile – Samara Inti Abadi -->
+<div class="col">
+    <div class="card project-card p-3 h-100">
+        <div class="card-body d-flex flex-column">
+            <h3 class="card-title"><i class="fas fa-globe fa-icon"></i>Company Profile – Samara Inti Abadi</h3>
+            <p class="text-muted mb-1">2024 – Present</p>
+            <ul class="mb-2">
+                <li>Developed a clean, responsive <strong>company profile website</strong> using <strong>WordPress</strong>.</li>
+                <li>Showcased <strong>core services</strong> and <strong>contact information</strong> with a clear layout.</li>
+                <li>Prioritized <strong>user-friendly navigation</strong> to improve user journey and engagement.</li>
+                <li>Ensured consistent branding, mobile optimization, and fast performance.</li>
+                <li>Integrated SEO best practices and analytics tools to increase online visibility.</li>
+                <li>Optimized content structure and layout based on analytics insights for continuous improvement.</li>
+            </ul>
+            <p><strong>Skills:</strong> WordPress</p>
+            <div class="mt-auto">
+                <a href="http://samarainti.com" target="_blank" class="btn btn-primary btn-sm">
+                    <i class="fas fa-link fa-icon"></i> View Project
+                </a>
+            </div>
+        </div>
     </div>
-</section>
+</div>
 
 
-     <!-- Projects -->
-<section id="projects" class="mb-5">
-    <h2 class="section-title mb-3"><i class="fas fa-gem fa-icon"></i>Selected Projects</h2>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-        <!-- Project 1 -->
-        <div class="col">
-            <div class="card project-card p-3 h-100">
-                <div class="card-body">
-                    <h3 class="card-title"><i class="fas fa-shopping-cart fa-icon"></i>Web-Based Order Management System</h3>
-                    <p class="text-muted mb-1">Oct 2024 – Present | PT Primanusa Mukti Utama</p>
-                    <ul class="mb-2">
-                        <li>Built a responsive, multi-user order management system</li>
-                        <li>Implemented real-time order tracking and dashboard analytics</li>
-                        <li>Designed for mobile accessibility and daily operational efficiency</li>
-                    </ul>
-                    <p><strong>Skills:</strong> Laravel, JavaScript, Bootstrap, MySQL</p>
-                    <a href="https://shop.primanusamuktiutama.web.id" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i>View Project</a>
+                <!-- GooBook – Book Search App -->
+                <div class="col">
+                    <div class="card project-card p-3 h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title"><i class="fas fa-book fa-icon"></i>GooBook – Book Search App</h3>
+                            <p class="text-muted mb-1">Jul 2023</p>
+                            <ul class="mb-2">
+                                <li>Developed a Book Search App using <strong>React.js</strong>.</li>
+                                <li>Integrated Open Library Search API to fetch and display book information.</li>
+                                <li>Designed and implemented a user-friendly interface for efficient book searches.</li>
+                                <li>Utilized React.js components to create a responsive and dynamic user experience.
+                                </li>
+                                <li>Implemented features for searching and filtering books based on various criteria.
+                                </li>
+                                <li>Conducted thorough testing to validate the app's functionality and user experience.
+                                </li>
+                            </ul>
+                            <p><strong>Skills:</strong> React.js, Open Library API</p>
+                            <div class="mt-auto">
+                                <a href="https://github.com/dinarsta/SEVIMA-GoBook" target="_blank"
+                                    class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i> View Project</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="col">
-            <div class="card project-card p-3 h-100">
-                <div class="card-body">
-                    <h3 class="card-title"><i class="fas fa-globe fa-icon"></i>Company Profile – PT Primanusa Mukti Utama</h3>
-                    <p class="text-muted mb-1">2024 – Present</p>
-                    <ul class="mb-2">
-                        <li>Created a modern, professional company profile website</li>
-                        <li>Structured service pages for better visibility</li>
-                        <li>Optimized content and layout for SEO performance</li>
-                    </ul>
-                    <p><strong>Skills:</strong> WordPress</p>
-                    <a href="https://primanusamuktiutama.com/" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i>View Project</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="col">
-            <div class="card project-card p-3 h-100">
-                <div class="card-body">
-                    <h3 class="card-title"><i class="fas fa-globe fa-icon"></i>Company Profile – Samara Inti Abadi</h3>
-                    <p class="text-muted mb-1">2024 – Present</p>
-                    <ul class="mb-2">
-                        <li>Developed a clean and informative company profile website</li>
-                        <li>Highlighted core services and contact information</li>
-                        <li>Emphasized user-friendly navigation and layout</li>
-                    </ul>
-                    <p><strong>Skills:</strong> WordPress</p>
-                    <a href="http://samarainti.com" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i>View Project</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="col">
-            <div class="card project-card p-3 h-100">
-                <div class="card-body">
-                    <h3 class="card-title"><i class="fas fa-home fa-icon"></i>Frontend Development – Gethome.id</h3>
-                    <p class="text-muted mb-1">Nov 2023 – Jan 2024 | Propertree.id</p>
-                    <ul class="mb-2">
-                        <li>Translated Figma UI designs into functional components</li>
-                        <li>Built responsive layout using Next.js and Tailwind CSS</li>
-                        <li>Integrated RESTful APIs and ensured smooth user experience</li>
-                    </ul>
-                    <p><strong>Skills:</strong> Next.js, JavaScript, Tailwind CSS</p>
-                    <a href="https://gethome.id" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i>View Project</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 5 -->
-        <div class="col">
-            <div class="card project-card p-3 h-100">
-                <div class="card-body">
-                    <h3 class="card-title"><i class="fas fa-book fa-icon"></i>GoBook – Book Search App</h3>
-                    <p class="text-muted mb-1">Jul 2023</p>
-                    <ul class="mb-2">
-                        <li>Built a digital book search application using Open Library API</li>
-                        <li>Displayed real-time search results with dynamic filtering</li>
-                        <li>Designed responsive and intuitive user interface</li>
-                    </ul>
-                    <p><strong>Skills:</strong> React.js, Open Library API</p>
-                    <a href="https://github.com/dinarsta/SEVIMA-GoBook" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i>View Project</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project 6 - AC Maintenance -->
-        <div class="col">
-            <div class="card project-card p-3 h-100">
-                <div class="card-body">
-                    <h3 class="card-title"><i class="fas fa-tools fa-icon"></i>AC Maintenance Web App</h3>
-                      <p class="text-muted mb-1">Jun 2025 – Present | PT Primanusa Mukti Utama</p>
-                    <ul class="mb-2">
-                        <li>Developed a web-based AC maintenance management system</li>
-                        <li>Enabled scan feature to input the last maintenance date</li>
-                        <li>Stored and displayed maintenance history records</li>
-                        <li>Improved maintenance scheduling and tracking</li>
-                        <li>Responsive UI with Bootstrap and JavaScript interactivity</li>
-                    </ul>
-                    <p><strong>Skills:</strong> Laravel, JavaScript, HTML, Bootstrap</p>
-                    <!-- Optional link -->
-                    <!-- <a href="#" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i>View Project</a> -->
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
+        </section>
 
         <!-- Contact -->
-  <section id="contact" class="mb-5">
-    <h2 class="section-title mb-3"><i class="fas fa-envelope-open-text fa-icon"></i>Contact</h2>
-    <div class="card p-3">
-        <p><i class="fas fa-envelope fa-icon"></i>
-            <a href="mailto:rositadina816@gmail.com" class="contact-link">rositadina816@gmail.com</a>
-        </p>
-        <p><i class="fab fa-linkedin fa-icon"></i>
-            <a href="https://www.linkedin.com/in/dinarsta/" target="_blank" class="contact-link">linkedin.com/in/dinarsta/</a>
-        </p>
-        <p><i class="fas fa-phone fa-icon"></i>
-            <a href="tel:+6285695612315" class="contact-link">+62 856-9561-2315</a>
-        </p>
-    </div>
-</section>
-
+        <section id="contact" class="mb-5">
+            <h2 class="section-title mb-3"><i class="fas fa-envelope-open-text fa-icon"></i>Contact</h2>
+            <div class="card p-3">
+                <p><i class="fas fa-envelope fa-icon"></i>
+                    <a href="mailto:rositadina816@gmail.com" class="contact-link">rositadina816@gmail.com</a>
+                </p>
+                <p><i class="fab fa-linkedin fa-icon"></i>
+                    <a href="https://www.linkedin.com/in/dinarsta/" target="_blank"
+                        class="contact-link">linkedin.com/in/dinarsta/</a>
+                </p>
+                <p><i class="fas fa-phone fa-icon"></i>
+                    <a href="tel:+6285695612315" class="contact-link">+62 856-9561-2315</a>
+                </p>
+            </div>
+        </section>
 
         <!-- Footer -->
         <footer class="text-center py-3">
@@ -442,7 +559,9 @@
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <!-- Theme Toggle Script -->
     <script>
         const themeToggle = document.querySelector('.theme-toggle');
@@ -455,4 +574,5 @@
         });
     </script>
 </body>
+
 </html>
