@@ -1,573 +1,889 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dina Rosita - Portfolio</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Dina Rosita — Front End Developer</title>
     <link rel="icon" href="src/dina.jpg" type="image/png">
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #a91b2e;
-            /* Bold crimson */
-            --secondary-color: #6b3fa0;
-            /* Deep purple */
-            --accent-color: #ff6f61;
-            /* Vibrant coral */
-            --gold-accent: #f4b400;
-            /* Bold gold */
-            --bg-light: #f8f1f1;
-            /* Crisp off-white */
-            --bg-dark: #1a1a1a;
-            /* Deep charcoal */
-            --text-dark: #1f1f1f;
-            /* Strong black */
-            --text-secondary: #4a2c2c;
-            /* Dark taupe */
-            --text-dark-mode: #ffffff;
-            /* White for dark mode */
-            --gold-dark-mode: #e6a800;
-            /* Deep amber for dark mode */
+            --void: #05070a;
+            --panel: #0b111c;
+            --panel-2: #101a2b;
+            --line: #1c2a3f;
+            --blue-deep: #0f2a4a;
+            --blue: #2f6fed;
+            --cyan: #4fd1ff;
+            --white: #f2f6fb;
+            --gray: #7f8fa6;
+            --gray-dim: #556377;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', sans-serif;
         }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--bg-light), #f0e6e6);
-            color: var(--text-dark);
-            transition: background 0.3s, color 0.3s;
+            margin: 0;
+            font-family: var(--sans);
+            background: var(--void);
+            color: var(--white);
+            background-image:
+                linear-gradient(var(--line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line) 1px, transparent 1px);
+            background-size: 42px 42px;
+            background-position: -1px -1px;
         }
 
-        body.dark-mode {
-            background: var(--bg-dark);
-            color: var(--text-dark-mode);
+        /* subtle vignette so the grid doesn't fight with content */
+        .grid-fade {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 0%, transparent 0%, var(--void) 78%);
+            z-index: 0;
         }
 
-        .navbar {
-            background: var(--bg-light);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+        a { text-decoration: none; }
 
-        .dark-mode .navbar {
-            background: #2a2a2a;
-            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-        }
+        ::selection { background: var(--blue); color: var(--white); }
 
-        .navbar-brand,
-        .nav-link {
-            color: var(--primary-color) !important;
-            font-family: 'Playfair Display', serif;
+        .wrap {
             position: relative;
-            transition: color 0.3s;
+            z-index: 1;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        .dark-mode .navbar-brand,
-        .dark-mode .nav-link {
-            color: var(--text-dark-mode) !important;
+        /* ---------- NAV ---------- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(5, 7, 10, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
         }
 
-        .nav-link:hover::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--gold-accent);
-            transition: background-color 0.3s;
+        .nav-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .dark-mode .nav-link:hover::after {
-            background-color: var(--gold-dark-mode);
+        .brand {
+            font-family: var(--mono);
+            font-weight: 700;
+            color: var(--white);
+            font-size: 1rem;
+            letter-spacing: 0.02em;
         }
 
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border: 4px solid #fff;
+        .brand .dot { color: var(--cyan); }
+
+        .navlinks {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navlinks a {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--gray);
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .navlinks a:hover { color: var(--cyan); }
+
+        .navlinks a .num {
+            color: var(--gray-dim);
+            margin-right: 4px;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--line);
+            color: var(--white);
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-family: var(--mono);
+        }
+
+        @media (max-width: 760px) {
+            .navlinks { display: none; }
+            .nav-toggle { display: inline-block; }
+            .navlinks.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: var(--panel);
+                border-bottom: 1px solid var(--line);
+                padding: 16px 24px;
+                gap: 14px;
+            }
+        }
+
+        /* ---------- HERO / TERMINAL ---------- */
+        .hero { padding: 72px 0 40px; }
+
+        .terminal {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px rgba(47, 111, 237, 0.05), 0 20px 60px -20px rgba(47, 111, 237, 0.25);
+        }
+
+        .term-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: var(--panel-2);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .term-dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--gray-dim);
         }
 
-        .profile-img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(169, 27, 46, 0.5);
+        .term-dot.blue { background: var(--blue); }
+        .term-dot.cyan { background: var(--cyan); }
+
+        .term-title {
+            margin-left: 8px;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--gray);
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        li,
-        a,
-        span {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
+        .term-body {
+            padding: 28px 26px 32px;
+            font-family: var(--mono);
         }
 
-        .dark-mode h1,
-        .dark-mode h2,
-        .dark-mode h3,
-        .dark-mode h4,
-        .dark-mode h5,
-        .dark-mode h6,
-        .dark-mode p,
-        .dark-mode li,
-        .dark-mode a,
-        .dark-mode span {
-            color: var(--text-dark-mode);
+        .term-line {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 6px;
         }
 
-        .card {
-            border: none;
-            border-radius: 12px;
-            background: #fff;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .term-line .prompt { color: var(--cyan); }
+        .term-line .path { color: var(--blue); }
+
+        .term-output h1 {
+            font-family: var(--mono);
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            font-weight: 800;
+            margin: 10px 0 4px;
+            color: var(--white);
         }
 
-        .dark-mode .card {
-            background: #2a2a2a;
+        .term-output h1 .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.6rem;
+            background: var(--cyan);
+            margin-left: 6px;
+            vertical-align: middle;
+            animation: blink 1.1s steps(1) infinite;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(169, 27, 46, 0.3);
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .role-line {
+            font-size: 0.95rem;
+            color: var(--cyan);
+            margin-bottom: 18px;
         }
 
-        .project-card .card-title {
-            font-weight: 600;
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            font-size: 0.82rem;
+            color: var(--gray);
+            font-family: var(--sans);
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            font-family: 'Playfair Display', serif;
-            border-radius: 25px;
-            color: #fff;
+        .meta-row i { color: var(--blue); margin-right: 6px; }
+
+        .hero-ctas {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
         }
 
-        .dark-mode .btn-primary {
-            background-color: #8a1625;
-            border-color: #8a1625;
-            color: var(--text-dark-mode);
+        .btn {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            padding: 10px 18px;
+            border-radius: 6px;
+            border: 1px solid var(--line);
+            color: var(--white);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
         }
 
-        .btn-primary:hover {
-            background-color: #8a1625;
-            border-color: #8a1625;
-            color: #fff;
+        .btn-solid {
+            background: var(--blue);
+            border-color: var(--blue);
         }
 
-        .badge {
-            background-color: var(--secondary-color);
-            color: #fff;
+        .btn-solid:hover { background: #2559c9; color: #fff; }
+
+        .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+        /* ---------- SECTION HEADERS ---------- */
+        section { padding: 56px 0; border-top: 1px solid var(--line); }
+
+        .sec-label {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--cyan);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sec-label::before {
+            content: '';
+            width: 18px;
+            height: 1px;
+            background: var(--cyan);
+        }
+
+        .sec-title {
+            font-family: var(--mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin: 0 0 28px;
+        }
+
+        .sec-title .bracket { color: var(--blue); }
+
+        /* ---------- CARDS ---------- */
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 22px 24px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .panel:hover {
+            border-color: var(--blue-deep);
+            transform: translateY(-2px);
+        }
+
+        .panel + .panel { margin-top: 16px; }
+
+        .about-text { color: var(--gray); line-height: 1.75; font-size: 0.98rem; }
+
+        .about-text strong { color: var(--white); font-weight: 600; }
+
+        /* ---------- EXPERIENCE ---------- */
+        .exp-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .exp-role {
+            font-family: var(--mono);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .exp-role .at { color: var(--gray-dim); font-weight: 400; }
+        .exp-role .company { color: var(--cyan); }
+
+        .exp-date {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--gray-dim);
+            white-space: nowrap;
+        }
+
+        .exp-loc { font-size: 0.82rem; color: var(--gray-dim); margin: 4px 0 10px; }
+
+        .exp-desc { color: var(--gray); font-size: 0.92rem; line-height: 1.6; margin-bottom: 10px; }
+
+        .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+        .tag {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--blue);
+            border: 1px solid var(--blue-deep);
+            background: rgba(47, 111, 237, 0.08);
+            padding: 4px 10px;
             border-radius: 20px;
-            padding: 6px 12px;
-            font-size: 0.85em;
         }
 
-        .dark-mode .badge {
-            background-color: #5a3385;
-            color: var(--text-dark-mode);
+        /* ---------- EDUCATION ---------- */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
 
-        .theme-toggle {
-            cursor: pointer;
-            color: var(--gold-accent);
+        @media (max-width: 700px) { .edu-grid { grid-template-columns: 1fr; } }
+
+        .edu-school {
+            font-family: var(--mono);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
         }
 
-        .dark-mode .theme-toggle {
-            color: var(--gold-dark-mode);
-        }
+        .edu-degree { color: var(--gray); font-size: 0.9rem; }
 
-        .section-title {
+        .edu-date { color: var(--gray-dim); font-family: var(--mono); font-size: 0.75rem; margin-top: 8px; }
+
+        /* ---------- SKILLS ---------- */
+        .skill-cat + .skill-cat { margin-top: 30px; }
+
+        .skill-cat-label {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--white);
             font-weight: 600;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .dark-mode .section-title {
-            border-bottom-color: #e65b50;
+        .skill-cat-label .num {
+            color: var(--gray-dim);
+            border: 1px solid var(--line);
+            background: var(--panel-2);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 0.68rem;
         }
 
-        .text-muted {
-            color: var(--text-secondary) !important;
+        .skill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .dark-mode .text-muted {
-            color: var(--text-dark-mode) !important;
+        .skill-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
         }
 
-        .contact-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-family: 'Playfair Display', serif;
+        .skill-badge i { font-size: 1.5rem; }
+
+        .skill-badge:hover {
+            transform: translateY(-4px);
+            border-color: var(--cyan);
+            box-shadow: 0 10px 24px -12px rgba(79, 209, 255, 0.5);
         }
 
-        .dark-mode .contact-link {
-            color: var(--text-dark-mode);
+        .skill-badge[data-tip] { position: relative; }
+
+        .skill-badge[data-tip]::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--gray-dim);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
         }
 
-        .contact-link:hover {
-            color: #8a1625;
-            text-decoration: underline;
+        .skill-badge[data-tip]:hover::after { opacity: 1; }
+
+        /* ---------- PROJECTS ---------- */
+        .proj-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 18px;
         }
 
-        .fa-icon {
-            color: var(--gold-accent);
-            margin-right: 8px;
+        .proj-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s, transform 0.2s;
         }
 
-        .dark-mode .fa-icon {
-            color: var(--gold-dark-mode);
+        .proj-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+
+        .proj-index {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--gray-dim);
+            margin-bottom: 8px;
         }
 
-        @media (max-width: 576px) {
-            .profile-img {
-                width: 80px;
-                height: 80px;
-            }
-
-            .display-5 {
-                font-size: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .project-card {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .project-card .card-body {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .project-card .mt-auto {
-                margin-top: auto;
-            }
+        .proj-title {
+            font-family: var(--mono);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
         }
+
+        .proj-date { font-size: 0.75rem; color: var(--gray-dim); margin-bottom: 12px; }
+
+        .proj-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px;
+            color: var(--gray);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .proj-list li { position: relative; padding-left: 16px; margin-bottom: 6px; }
+
+        .proj-list li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--cyan);
+            font-family: var(--mono);
+        }
+
+        .proj-list strong { color: var(--white); font-weight: 600; }
+
+        .proj-card .tag-row { margin-bottom: 14px; }
+
+        .proj-link {
+            margin-top: auto;
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--cyan);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .proj-link:hover { color: var(--white); }
+
+        /* ---------- CONTACT ---------- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .contact-item {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--white);
+            transition: border-color 0.2s;
+        }
+
+        .contact-item:hover { border-color: var(--cyan); color: var(--cyan); }
+
+        .contact-item .icon-box {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: var(--blue-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan);
+            flex-shrink: 0;
+        }
+
+        .contact-item .label {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--gray-dim);
+            display: block;
+        }
+
+        .contact-item .value { font-size: 0.88rem; }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0;
+            text-align: center;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--gray-dim);
+        }
+
+        footer .dot { color: var(--cyan); }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Dina Rosita</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item">
-                        <span class="nav-link theme-toggle"><i class="fas fa-moon"></i></span>
-                    </li>
-                </ul sprouts>
-            </div>
+    <div class="grid-fade"></div>
+
+    <nav class="navbar">
+        <div class="nav-inner">
+            <span class="brand">dina<span class="dot">.</span>dev</span>
+            <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+            <ul class="navlinks" id="navLinks">
+                <li><a href="#about"><span class="num">01</span>about</a></li>
+                <li><a href="#experience"><span class="num">02</span>experience</a></li>
+                <li><a href="#education"><span class="num">03</span>education</a></li>
+                <li><a href="#skills"><span class="num">04</span>skills</a></li>
+                <li><a href="#projects"><span class="num">05</span>projects</a></li>
+                <li><a href="#contact"><span class="num">06</span>contact</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container py-5">
-        <!-- Header -->
-        <header class="text-center mb-5">
-            <img src="src/dina.jpg" alt="Dina Rosita Profile" class="profile-img mb-3">
-            <h1 class="display-5 fw-bold">Dina Rosita</h1>
-            <p class="lead"><i class="fas fa-code fa-icon"></i>Web Developer | Universitas Terbuka</p>
-            <p><i class="fas fa-map-marker-alt fa-icon"></i>Pancoran Mas, West Java, Indonesia</p>
-            <p><i class="fas fa-envelope fa-icon"></i><a href="mailto:dina@example.com" class="contact-link">Let's
-                    Connect!</a></p>
+    <div class="wrap">
+        <!-- HERO -->
+        <header class="hero" id="top">
+            <div class="terminal">
+                <div class="term-bar">
+                    <span class="term-dot"></span>
+                    <span class="term-dot blue"></span>
+                    <span class="term-dot cyan"></span>
+                    <span class="term-title">dina@portfolio: ~</span>
+                </div>
+                <div class="term-body">
+                    <div class="term-line"><span class="prompt">$</span> whoami</div>
+                    <div class="term-output">
+                        <h1>Dina Rosita<span class="cursor"></span></h1>
+                        <div class="role-line">&gt; Front End Developer :: Universitas Terbuka</div>
+                    </div>
+                    <div class="meta-row">
+                        <span><i class="fas fa-location-dot"></i>Pancoran Mas, Depok, West Java</span>
+                        <span><i class="fas fa-envelope"></i>rositadina816@gmail.com</span>
+                    </div>
+                    <div class="hero-ctas">
+                        <a href="#projects" class="btn btn-solid"><i class="fas fa-terminal"></i>view_projects()</a>
+                        <a href="#contact" class="btn btn-ghost"><i class="fas fa-paper-plane"></i>get_in_touch()</a>
+                    </div>
+                </div>
+            </div>
         </header>
 
-        <!-- About -->
-        <section id="about" class="mb-5">
-            <h2 class="section-title mb-3"><i class="fas fa-heart fa-icon"></i>About Me</h2>
-            <div class="card p-4">
-                <p>I'm a passionate Information Systems student at Universitas Terbuka with a Software Engineering
-                    background from SMK Taruna Bhakti. I specialize in crafting intuitive, user-friendly web
-                    applications and am dedicated to creating seamless digital experiences through innovative web
-                    development.</p>
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="sec-label">// 01</div>
+            <h2 class="sec-title"><span class="bracket">&lt;</span>About<span class="bracket">/&gt;</span></h2>
+            <div class="panel">
+                <p class="about-text">Mahasiswi <strong>Sistem Informasi</strong> di Universitas Terbuka dengan latar
+                    belakang <strong>Rekayasa Perangkat Lunak</strong> dari SMK Taruna Bhakti. Fokus membangun aplikasi
+                    web yang <strong>rapi, cepat, dan mudah digunakan</strong> — dari sistem internal berbasis Laravel
+                    hingga company profile berbasis WordPress. Terbiasa bekerja dari sisi tampilan (UI) sampai
+                    integrasi data ke database.</p>
             </div>
         </section>
 
-        <!-- Experience -->
-        <section id="experience" class="mb-5">
-            <h2 class="section-title mb-3"><i class="fas fa-briefcase fa-icon"></i>Experience</h2>
-            <div class="card mb-3 p-3">
-                <h3 class="h5"><i class="fas fa-laptop-code fa-icon"></i>Web Developer - PT Primanusa Mukti Utama</h3>
-                <p class="text-muted mb-1">Mar 2024 - Present | Depok, West Java</p>
-                <p>Building responsive web solutions with a focus on performance and user experience.</p>
-                <p><strong>Skills:</strong> Web Development, Responsive Design</p>
-            </div>
-            <div class="card mb-3 p-3">
-                <h3 class="h5"><i class="fas fa-paint-brush fa-icon"></i>Frontend Web Developer - Propertree.id
-                    (Internship)</h3>
-                <p class="text-muted mb-1">Nov 2023 - Jan 2024 | Depok, West Java</p>
-                <p>Developed dynamic front-end components using TypeScript and Figma.</p>
-                <p><strong>Skills:</strong> TypeScript, Figma, Responsive Design</p>
-            </div>
-            <div class="card mb-3 p-3">
-                <h3 class="h5"><i class="fas fa-vial fa-icon"></i>Frontend Developer - PT Ciptadra Softindo (Internship)
-                </h3>
-                <p class="text-muted mb-1">Sep 2022 - Mar 2023 | Depok, West Java</p>
-                <p>Contributed to test automation and front-end development using Selenium.</p>
-                <p><strong>Skills:</strong> Test Automation, Selenium</p>
-            </div>
-        </section>
+        <!-- EXPERIENCE -->
+        <section id="experience">
+            <div class="sec-label">// 02</div>
+            <h2 class="sec-title"><span class="bracket">&lt;</span>Experience<span class="bracket">/&gt;</span></h2>
 
-        <!-- Education -->
-        <section id="education" class="mb-5">
-            <h2 class="section-title mb-3"><i class="fas fa-graduation-cap fa-icon"></i>Education</h2>
-            <div class="card mb-3 p-3">
-                <h3 class="h5">Universitas Terbuka</h3>
-                <p class="text-muted mb-1">Bachelor of Information Systems | Aug 2023 - Aug 2027</p>
-            </div>
-            <div class="card mb-3 p-3">
-                <h3 class="h5">SMK Taruna Bhakti</h3>
-                <p class="text-muted mb-1">Software Engineering | 2020 - 2023</p>
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section id="skills" class="mb-5">
-            <h2 class="section-title mb-3"><i class="fas fa-star fa-icon"></i>Top Skills</h2>
-            <div class="card p-3">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fas fa-desktop fa-icon"></i>Front-End Development</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fas fa-layer-group fa-icon"></i>Laravel</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fab fa-js fa-icon"></i>JavaScript</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fab fa-bootstrap fa-icon"></i>Bootstrap</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fab fa-html5 fa-icon"></i>HTML</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fas fa-database fa-icon"></i>MySQL</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fas fa-rocket fa-icon"></i>Next.js</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fab fa-react fa-icon"></i>React.js</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fas fa-paint-roller fa-icon"></i>Tailwind CSS</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fab fa-wordpress fa-icon"></i>WordPress</span>
-                    </li>
-                    <li class="list-inline-item mb-2">
-                        <span class="badge"><i class="fab fa-figma fa-icon"></i>Figma</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects" class="mb-5">
-            <h2 class="section-title mb-3"><i class="fas fa-gem fa-icon"></i>Selected Projects</h2>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 align-items-stretch">
-
-                <!-- Inventory Management Application -->
-                <div class="col">
-                    <div class="card project-card p-3 h-100">
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title"><i class="fas fa-boxes fa-icon"></i>Inventory Management Application
-                            </h3>
-                            <p class="text-muted mb-1">Jun 2025 – Present | PT Primanusa Mukti Utama</p>
-                            <ul class="mb-2">
-                                <li>Developed an inventory management system with <strong>import/export
-                                        functionality</strong>.</li>
-                                <li>Integrated stock tables for <strong>incoming and outgoing goods</strong>.</li>
-                                <li>Implemented <strong>barcode scanning</strong> for both incoming and outgoing items.
-                                </li>
-                                <li>Added <strong>transaction history tracking</strong> for detailed monitoring.</li>
-                                <li>Included an <strong>activity log</strong> to record all user actions for auditing
-                                    purposes.</li>
-                                <li>Ensured accurate data management and efficient stock control processes.</li>
-                            </ul>
-                            <p><strong>Skills:</strong> Laravel, JavaScript, HTML, Bootstrap, MySQL</p>
-                        </div>
-                    </div>
+            <div class="panel">
+                <div class="exp-head">
+                    <div class="exp-role">Web Developer <span class="at">@</span> <span class="company">PT Primanusa
+                            Mukti Utama</span></div>
+                    <div class="exp-date">Mar 2024 — Present</div>
                 </div>
-
-                <!-- Web-Based Order Management System -->
-                <div class="col">
-                    <div class="card project-card p-3 h-100">
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title"><i class="fas fa-shopping-cart fa-icon"></i>Web-Based Order
-                                Management System</h3>
-                            <p class="text-muted mb-1">Oct 2024 – Present | PT Primanusa Mukti Utama</p>
-                            <ul class="mb-2">
-                                <li>Developed a responsive, multi-user order management app with
-                                    <strong>Laravel</strong> & <strong>JavaScript</strong>.</li>
-                                <li>Integrated <strong>real-time tracking</strong>, <strong>dashboard
-                                        analytics</strong>, and mobile optimization.</li>
-                                <li>Streamlined order input, status updates, reporting, and automated notifications.
-                                </li>
-                                <li>Designed user-friendly UI with <strong>Bootstrap</strong> for better usability.</li>
-                                <li>Implemented <strong>role-based access</strong> to secure admin, staff, and client
-                                    operations.</li>
-                                <li>Utilized <strong>MySQL</strong> for structured data storage and fast queries.</li>
-                            </ul>
-                            <p><strong>Skills:</strong> Laravel, JavaScript, Bootstrap, MySQL</p>
-                        </div>
-                    </div>
+                <div class="exp-loc">Depok, West Java</div>
+                <p class="exp-desc">Membangun solusi web responsif dengan fokus pada performa dan pengalaman
+                    pengguna.</p>
+                <div class="tag-row">
+                    <span class="tag">Web Development</span>
+                    <span class="tag">Responsive Design</span>
                 </div>
-
-                <!-- Company Profile – PT Primanusa Mukti Utama -->
-                <div class="col">
-                    <div class="card project-card p-3 h-100">
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title"><i class="fas fa-globe fa-icon"></i>Company Profile – PT Primanusa
-                                Mukti Utama</h3>
-                            <p class="text-muted mb-1">2024 – Present</p>
-                            <ul class="mb-2">
-                                <li>Developed a modern, responsive <strong>company profile website</strong> using
-                                    <strong>WordPress</strong>.</li>
-                                <li>Designed and structured <strong>service pages</strong> to enhance clarity and
-                                    navigation.</li>
-                                <li>Optimized content structure and metadata for <strong>SEO performance</strong>.</li>
-                                <li>Ensured fast load times and mobile responsiveness for better user experience.</li>
-                                <li>Aligned design and content with the company’s branding and marketing goals.</li>
-                                <li>Integrated advanced analytics to monitor visitor engagement and inform continuous
-                                    content refinement.</li>
-                            </ul>
-                            <p><strong>Skills:</strong> WordPress</p>
-                            <div class="mt-auto">
-                                <a href="https://primanusamuktiutama.com/" target="_blank"
-                                    class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i> View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Company Profile – Samara Inti Abadi -->
-                <div class="col">
-                    <div class="card project-card p-3 h-100">
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title"><i class="fas fa-globe fa-icon"></i>Company Profile – Samara Inti
-                                Abadi</h3>
-                            <p class="text-muted mb-1">2024 – Present</p>
-                            <ul class="mb-2">
-                                <li>Developed a clean, responsive <strong>company profile website</strong> using
-                                    <strong>WordPress</strong>.</li>
-                                <li>Showcased <strong>core services</strong> and <strong>contact information</strong>
-                                    with a clear layout.</li>
-                                <li>Prioritized <strong>user-friendly navigation</strong> to improve user journey and
-                                    engagement.</li>
-                                <li>Ensured consistent branding, mobile optimization, and fast performance.</li>
-                                <li>Integrated SEO best practices and analytics tools to increase online visibility.
-                                </li>
-                                <li>Optimized content structure and layout based on analytics insights for continuous
-                                    improvement.</li>
-                            </ul>
-                            <p><strong>Skills:</strong> WordPress</p>
-                            <div class="mt-auto">
-                                <a href="http://samarainti.com" target="_blank" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-link fa-icon"></i> View Project
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GooBook – Book Search App -->
-                <div class="col">
-                    <div class="card project-card p-3 h-100">
-                        <div class="card-body d-flex flex-column">
-                            <h3 class="card-title"><i class="fas fa-book fa-icon"></i>GooBook – Book Search App</h3>
-                            <p class="text-muted mb-1">Jul 2023</p>
-                            <ul class="mb-2">
-                                <li>Developed a Book Search App using <strong>React.js</strong>.</li>
-                                <li>Integrated Open Library Search API to fetch and display book information.</li>
-                                <li>Designed and implemented a user-friendly interface for efficient book searches.</li>
-                                <li>Utilized React.js components to create a responsive and dynamic user experience.
-                                </li>
-                                <li>Implemented features for searching and filtering books based on various criteria.
-                                </li>
-                                <li>Conducted thorough testing to validate the app's functionality and user experience.
-                                </li>
-                            </ul>
-                            <p><strong>Skills:</strong> React.js, Open Library API</p>
-                            <div class="mt-auto">
-                                <a href="https://github.com/dinarsta/SEVIMA-GoBook" target="_blank"
-                                    class="btn btn-primary btn-sm"><i class="fas fa-link fa-icon"></i> View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </section>
 
-        <!-- Contact -->
-        <section id="contact" class="mb-5">
-            <h2 class="section-title mb-3"><i class="fas fa-envelope-open-text fa-icon"></i>Contact</h2>
-            <div class="card p-3">
-                <p><i class="fas fa-envelope fa-icon"></i>
-                    <a href="mailto:rositadina816@gmail.com" class="contact-link">rositadina816@gmail.com</a>
+            <div class="panel">
+                <div class="exp-head">
+                    <div class="exp-role">Frontend Web Developer <span class="at">@</span> <span
+                            class="company">Propertree.id</span> <span class="at">(Internship)</span></div>
+                    <div class="exp-date">Nov 2023 — Jan 2024</div>
+                </div>
+                <div class="exp-loc">Depok, West Java</div>
+                <p class="exp-desc">Mengembangkan komponen front-end yang dinamis menggunakan TypeScript dan Figma.
                 </p>
-                <p><i class="fab fa-linkedin fa-icon"></i>
-                    <a href="https://www.linkedin.com/in/dinarsta/" target="_blank"
-                        class="contact-link">linkedin.com/in/dinarsta/</a>
-                </p>
-                <p><i class="fas fa-phone fa-icon"></i>
-                    <a href="tel:+6285695612315" class="contact-link">+62 856-9561-2315</a>
-                </p>
+                <div class="tag-row">
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">Figma</span>
+                    <span class="tag">Responsive Design</span>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="exp-head">
+                    <div class="exp-role">Frontend Developer <span class="at">@</span> <span class="company">PT
+                            Ciptadra Softindo</span> <span class="at">(Internship)</span></div>
+                    <div class="exp-date">Sep 2022 — Mar 2023</div>
+                </div>
+                <div class="exp-loc">Depok, West Java</div>
+                <p class="exp-desc">Berkontribusi pada test automation dan pengembangan front-end menggunakan
+                    Selenium.</p>
+                <div class="tag-row">
+                    <span class="tag">Test Automation</span>
+                    <span class="tag">Selenium</span>
+                </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="text-center py-3">
-            <p class="mb-0"><i class="fas fa-heart fa-icon"></i>© 2025 Dina Rosita. All rights reserved.</p>
-        </footer>
+        <!-- EDUCATION -->
+        <section id="education">
+            <div class="sec-label">// 03</div>
+            <h2 class="sec-title"><span class="bracket">&lt;</span>Education<span class="bracket">/&gt;</span></h2>
+            <div class="edu-grid">
+                <div class="panel">
+                    <div class="edu-school">Universitas Terbuka</div>
+                    <div class="edu-degree">Bachelor of Information Systems</div>
+                    <div class="edu-date">Aug 2023 — Aug 2027</div>
+                </div>
+                <div class="panel">
+                    <div class="edu-school">SMK Taruna Bhakti</div>
+                    <div class="edu-degree">Software Engineering</div>
+                    <div class="edu-date">2020 — 2023</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="sec-label">// 04</div>
+            <h2 class="sec-title"><span class="bracket">&lt;</span>Skills<span class="bracket">/&gt;</span></h2>
+
+            <div class="skill-cat">
+                <div class="skill-cat-label"><span class="num">01</span>Languages</div>
+                <div class="skill-row">
+                    <div class="skill-badge" data-tip="HTML5" style="background:#e34f26;"><i class="fab fa-html5" style="color:#fff;"></i></div>
+                    <div class="skill-badge" data-tip="CSS3" style="background:#1572b6;"><i class="fab fa-css3-alt" style="color:#fff;"></i></div>
+                    <div class="skill-badge" data-tip="JavaScript" style="background:#f7df1e; color:#1a1a1a;">JS</div>
+                    <div class="skill-badge" data-tip="PHP" style="background:#f2f2f2; color:#1a1a1a; font-style:italic;">php</div>
+                    <div class="skill-badge" data-tip="TypeScript" style="background:#3178c6; color:#fff;">TS</div>
+                </div>
+            </div>
+
+            <div class="skill-cat">
+                <div class="skill-cat-label"><span class="num">02</span>Frameworks & Libraries</div>
+                <div class="skill-row">
+                    <div class="skill-badge" data-tip="Laravel" style="background:#150f0c;"><i class="fab fa-laravel" style="color:#ff2d20;"></i></div>
+                    <div class="skill-badge" data-tip="Vue.js" style="background:#0d1420;"><i class="fab fa-vuejs" style="color:#42b883;"></i></div>
+                    <div class="skill-badge" data-tip="React.js" style="background:#0d1420;"><i class="fab fa-react" style="color:#61dafb;"></i></div>
+                    <div class="skill-badge" data-tip="Next.js" style="background:#000; color:#fff;">N</div>
+                    <div class="skill-badge" data-tip="Bootstrap" style="background:#7952b3; color:#fff;">B</div>
+                    <div class="skill-badge" data-tip="Tailwind CSS" style="background:#0d1420;"><i class="fas fa-wind" style="color:#38bdf8;"></i></div>
+                </div>
+            </div>
+
+            <div class="skill-cat">
+                <div class="skill-cat-label"><span class="num">03</span>Database</div>
+                <div class="skill-row">
+                    <div class="skill-badge" data-tip="MySQL" style="background:#0d1420;"><i class="fas fa-database" style="color:#00758f;"></i></div>
+                </div>
+            </div>
+
+            <div class="skill-cat">
+                <div class="skill-cat-label"><span class="num">04</span>Tools</div>
+                <div class="skill-row">
+                    <div class="skill-badge" data-tip="Git" style="background:#f05033;"><i class="fab fa-git-alt" style="color:#fff;"></i></div>
+                    <div class="skill-badge" data-tip="GitHub" style="background:#181717;"><i class="fab fa-github" style="color:#fff;"></i></div>
+                    <div class="skill-badge" data-tip="VS Code" style="background:#007acc; color:#fff;">VS</div>
+                    <div class="skill-badge" data-tip="Postman" style="background:#ff6c37;"><i class="fas fa-paper-plane" style="color:#fff;"></i></div>
+                    <div class="skill-badge" data-tip="Vercel" style="background:#000; color:#fff;">▲</div>
+                </div>
+            </div>
+
+            <div class="skill-cat">
+                <div class="skill-cat-label"><span class="num">05</span>Design & CMS</div>
+                <div class="skill-row">
+                    <div class="skill-badge" data-tip="Figma" style="background:#0d1420;"><i class="fab fa-figma" style="color:#a259ff;"></i></div>
+                    <div class="skill-badge" data-tip="Adobe XD" style="background:#470137; color:#ff61f6;">Xd</div>
+                    <div class="skill-badge" data-tip="WordPress" style="background:#21759b;"><i class="fab fa-wordpress" style="color:#fff;"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="sec-label">// 05</div>
+            <h2 class="sec-title"><span class="bracket">&lt;</span>Projects<span class="bracket">/&gt;</span></h2>
+            <div class="proj-grid">
+
+                <div class="proj-card">
+                    <div class="proj-index">proj_01</div>
+                    <div class="proj-title">Inventory Management Application</div>
+                    <div class="proj-date">Jun 2025 — Present · PT Primanusa Mukti Utama</div>
+                    <ul class="proj-list">
+                        <li>Sistem manajemen inventori dengan <strong>import/export</strong>.</li>
+                        <li>Tabel stok untuk <strong>barang masuk & keluar</strong>.</li>
+                        <li><strong>Barcode scanning</strong> untuk kedua jenis transaksi.</li>
+                        <li><strong>Riwayat transaksi</strong> & <strong>activity log</strong> untuk audit.</li>
+                    </ul>
+                    <div class="tag-row">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-index">proj_02</div>
+                    <div class="proj-title">Web-Based Order Management System</div>
+                    <div class="proj-date">Oct 2024 — Present · PT Primanusa Mukti Utama</div>
+                    <ul class="proj-list">
+                        <li>Aplikasi order multi-user berbasis <strong>Laravel & JavaScript</strong>.</li>
+                        <li><strong>Real-time tracking</strong> & <strong>dashboard analytics</strong>.</li>
+                        <li><strong>Role-based access</strong> untuk admin, staff, dan client.</li>
+                    </ul>
+                    <div class="tag-row">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-index">proj_03</div>
+                    <div class="proj-title">Company Profile — PT Primanusa Mukti Utama</div>
+                    <div class="proj-date">2024 — Present</div>
+                    <ul class="proj-list">
+                        <li>Website company profile responsif berbasis <strong>WordPress</strong>.</li>
+                        <li>Struktur service pages untuk navigasi yang jelas.</li>
+                        <li>Optimasi konten & metadata untuk <strong>SEO</strong>.</li>
+                    </ul>
+                    <div class="tag-row"><span class="tag">WordPress</span></div>
+                    <a href="https://primanusamuktiutama.com/" target="_blank" class="proj-link"><i
+                            class="fas fa-arrow-up-right-from-square"></i>view_project</a>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-index">proj_04</div>
+                    <div class="proj-title">Company Profile — Samara Inti Abadi</div>
+                    <div class="proj-date">2024 — Present</div>
+                    <ul class="proj-list">
+                        <li>Website company profile bersih berbasis <strong>WordPress</strong>.</li>
+                        <li>Layout jelas untuk layanan & kontak.</li>
+                        <li>SEO & analytics untuk visibilitas online.</li>
+                    </ul>
+                    <div class="tag-row"><span class="tag">WordPress</span></div>
+                    <a href="http://samarainti.com" target="_blank" class="proj-link"><i
+                            class="fas fa-arrow-up-right-from-square"></i>view_project</a>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-index">proj_05</div>
+                    <div class="proj-title">GooBook — Book Search App</div>
+                    <div class="proj-date">Jul 2023</div>
+                    <ul class="proj-list">
+                        <li>Aplikasi pencarian buku dengan <strong>React.js</strong>.</li>
+                        <li>Integrasi <strong>Open Library Search API</strong>.</li>
+                        <li>Fitur pencarian & filter buku.</li>
+                    </ul>
+                    <div class="tag-row">
+                        <span class="tag">React.js</span>
+                        <span class="tag">Open Library API</span>
+                    </div>
+                    <a href="https://github.com/dinarsta/SEVIMA-GoBook" target="_blank" class="proj-link"><i
+                            class="fas fa-arrow-up-right-from-square"></i>view_project</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="sec-label">// 06</div>
+            <h2 class="sec-title"><span class="bracket">&lt;</span>Contact<span class="bracket">/&gt;</span></h2>
+            <div class="contact-grid">
+                <a href="mailto:rositadina816@gmail.com" class="contact-item">
+                    <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <span class="label">EMAIL</span>
+                        <span class="value">rositadina816@gmail.com</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/dinarsta/" target="_blank" class="contact-item">
+                    <div class="icon-box"><i class="fab fa-linkedin-in"></i></div>
+                    <div>
+                        <span class="label">LINKEDIN</span>
+                        <span class="value">linkedin.com/in/dinarsta</span>
+                    </div>
+                </a>
+                <a href="https://github.com/dinarsta" target="_blank" class="contact-item">
+                    <div class="icon-box"><i class="fab fa-github"></i></div>
+                    <div>
+                        <span class="label">GITHUB</span>
+                        <span class="value">github.com/dinarsta</span>
+                    </div>
+                </a>
+                <a href="tel:+6285695612315" class="contact-item">
+                    <div class="icon-box"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <span class="label">PHONE</span>
+                        <span class="value">+62 856-9561-2315</span>
+                    </div>
+                </a>
+            </div>
+        </section>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <!-- Theme Toggle Script -->
+    <footer>
+        <span class="dot">©</span> 2025 Dina Rosita — built with <span class="dot">&lt;/&gt;</span> and coffee
+    </footer>
+
     <script>
-        const themeToggle = document.querySelector('.theme-toggle');
-        const body = document.body;
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const icon = themeToggle.querySelector('i');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
-        });
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
     </script>
 </body>
 
