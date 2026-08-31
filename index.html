@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -24,12 +24,29 @@
             --sans: 'Inter', sans-serif;
         }
 
+        html[data-theme="light"] {
+            --void: #f4f7fb;
+            --panel: #ffffff;
+            --panel-2: #eef2f8;
+            --line: #dbe3ee;
+            --blue-deep: #dbe7fb;
+            --blue: #2255d6;
+            --cyan: #0891b2;
+            --white: #0b111c;
+            --gray: #46536a;
+            --gray-dim: #6b7890;
+        }
+
         * { box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; width: 100%; overflow-x: hidden; }
 
         body {
             margin: 0;
+            width: 100%;
+            max-width: 100vw;
+            min-height: 100vh;
+            overflow-x: hidden;
             font-family: var(--sans);
             background: var(--void);
             color: var(--white);
@@ -38,6 +55,7 @@
                 linear-gradient(90deg, var(--line) 1px, transparent 1px);
             background-size: 42px 42px;
             background-position: -1px -1px;
+            transition: background-color 0.25s ease, color 0.25s ease;
         }
 
         /* subtle vignette so the grid doesn't fight with content */
@@ -51,24 +69,33 @@
 
         a { text-decoration: none; }
 
-        ::selection { background: var(--blue); color: var(--white); }
+        ::selection { background: var(--blue); color: #fff; }
 
         .wrap {
             position: relative;
             z-index: 1;
+            width: 100%;
             max-width: 980px;
             margin: 0 auto;
             padding: 0 24px;
         }
+
+        img, svg { max-width: 100%; }
 
         /* ---------- NAV ---------- */
         .navbar {
             position: sticky;
             top: 0;
             z-index: 50;
+            width: 100%;
             background: rgba(5, 7, 10, 0.85);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--line);
+            transition: background-color 0.25s ease, border-color 0.25s ease;
+        }
+
+        html[data-theme="light"] .navbar {
+            background: rgba(244, 247, 251, 0.85);
         }
 
         .nav-inner {
@@ -78,6 +105,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
         }
 
         .brand {
@@ -92,7 +120,7 @@
 
         .navlinks {
             display: flex;
-            gap: 28px;
+            gap: 24px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -112,6 +140,35 @@
             color: var(--gray-dim);
             margin-right: 4px;
         }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            color: var(--white);
+            border-radius: 6px;
+            padding: 7px 10px;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .icon-btn:hover { border-color: var(--cyan); color: var(--cyan); }
 
         .nav-toggle {
             display: none;
@@ -141,9 +198,10 @@
         }
 
         /* ---------- HERO / TERMINAL ---------- */
-        .hero { padding: 72px 0 40px; }
+        .hero { padding: 72px 0 40px; width: 100%; }
 
         .terminal {
+            width: 100%;
             background: var(--panel);
             border: 1px solid var(--line);
             border-radius: 10px;
@@ -197,6 +255,7 @@
             font-weight: 800;
             margin: 10px 0 4px;
             color: var(--white);
+            word-break: break-word;
         }
 
         .term-output h1 .cursor {
@@ -251,6 +310,7 @@
         .btn-solid {
             background: var(--blue);
             border-color: var(--blue);
+            color: #fff;
         }
 
         .btn-solid:hover { background: #2559c9; color: #fff; }
@@ -258,7 +318,7 @@
         .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
 
         /* ---------- SECTION HEADERS ---------- */
-        section { padding: 56px 0; border-top: 1px solid var(--line); }
+        section { padding: 56px 0; border-top: 1px solid var(--line); width: 100%; }
 
         .sec-label {
             font-family: var(--mono);
@@ -289,11 +349,12 @@
 
         /* ---------- CARDS ---------- */
         .panel {
+            width: 100%;
             background: var(--panel);
             border: 1px solid var(--line);
             border-radius: 10px;
             padding: 22px 24px;
-            transition: border-color 0.2s, transform 0.2s;
+            transition: border-color 0.2s, transform 0.2s, background-color 0.25s;
         }
 
         .panel:hover {
@@ -354,6 +415,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
+            width: 100%;
         }
 
         @media (max-width: 700px) { .edu-grid { grid-template-columns: 1fr; } }
@@ -444,6 +506,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 18px;
+            width: 100%;
         }
 
         .proj-card {
@@ -453,7 +516,8 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-            transition: border-color 0.2s, transform 0.2s;
+            transition: border-color 0.2s, transform 0.2s, background-color 0.25s;
+            min-width: 0;
         }
 
         .proj-card:hover { border-color: var(--blue); transform: translateY(-3px); }
@@ -515,6 +579,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 14px;
+            width: 100%;
         }
 
         .contact-item {
@@ -527,6 +592,7 @@
             gap: 14px;
             color: var(--white);
             transition: border-color 0.2s;
+            min-width: 0;
         }
 
         .contact-item:hover { border-color: var(--cyan); color: var(--cyan); }
@@ -550,7 +616,10 @@
             display: block;
         }
 
-        .contact-item .value { font-size: 0.88rem; }
+        .contact-item .value {
+            font-size: 0.88rem;
+            overflow-wrap: anywhere;
+        }
 
         /* ---------- FOOTER ---------- */
         footer {
@@ -572,7 +641,6 @@
     <nav class="navbar">
         <div class="nav-inner">
             <span class="brand">dinarsta<span class="dot">.</span>dev</span>
-            <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
             <ul class="navlinks" id="navLinks">
                 <li><a href="#about"><span class="num">01</span>about</a></li>
                 <li><a href="#experience"><span class="num">02</span>experience</a></li>
@@ -581,6 +649,13 @@
                 <li><a href="#projects"><span class="num">05</span>projects</a></li>
                 <li><a href="#contact"><span class="num">06</span>contact</a></li>
             </ul>
+            <div class="nav-right">
+                <div class="toggle-group">
+                    <button class="icon-btn" id="themeToggle" title="Toggle theme"><i class="fas fa-moon"></i></button>
+                    <button class="icon-btn" id="langToggle" title="Toggle language">EN</button>
+                </div>
+                <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
     </nav>
 
@@ -617,7 +692,10 @@
             <div class="sec-label">// 01</div>
             <h2 class="sec-title"><span class="bracket">&lt;</span>About<span class="bracket">/&gt;</span></h2>
             <div class="panel">
-                <p class="about-text">Mahasiswi <strong>Sistem Informasi</strong> di Universitas Terbuka dengan latar
+                <p class="about-text i18n"
+                    data-id="Mahasiswi <strong>Sistem Informasi</strong> di Universitas Terbuka dengan latar belakang <strong>Rekayasa Perangkat Lunak</strong> dari SMK Taruna Bhakti. Berpengalaman mengembangkan aplikasi web yang <strong>efisien, responsif, dan mudah digunakan</strong>, mulai dari sistem internal berbasis Laravel hingga company profile berbasis WordPress. Terbiasa menangani seluruh alur pengembangan, mulai dari perancangan antarmuka hingga integrasi basis data."
+                    data-en="Information Systems student at Universitas Terbuka with a background in <strong>Software Engineering</strong> from SMK Taruna Bhakti. Experienced in building web applications that are <strong>efficient, responsive, and user-friendly</strong>, ranging from Laravel-based internal systems to WordPress-based company profiles. Comfortable handling the entire development flow, from interface design to database integration.">
+                    Mahasiswi <strong>Sistem Informasi</strong> di Universitas Terbuka dengan latar
                     belakang <strong>Rekayasa Perangkat Lunak</strong> dari SMK Taruna Bhakti. Berpengalaman
                     mengembangkan aplikasi web yang <strong>efisien, responsif, dan mudah digunakan</strong>, mulai
                     dari sistem internal berbasis Laravel hingga company profile berbasis WordPress. Terbiasa
@@ -638,7 +716,10 @@
                     <div class="exp-date">Mar 2024 — Present</div>
                 </div>
                 <div class="exp-loc">Depok, West Java</div>
-                <p class="exp-desc">Membangun solusi web responsif dengan fokus pada performa dan pengalaman
+                <p class="exp-desc i18n"
+                    data-id="Membangun solusi web responsif dengan fokus pada performa dan pengalaman pengguna."
+                    data-en="Building responsive web solutions with a focus on performance and user experience.">
+                    Membangun solusi web responsif dengan fokus pada performa dan pengalaman
                     pengguna.</p>
                 <div class="tag-row">
                     <span class="tag">Web Development</span>
@@ -653,7 +734,10 @@
                     <div class="exp-date">Nov 2023 — Jan 2024</div>
                 </div>
                 <div class="exp-loc">Depok, West Java</div>
-                <p class="exp-desc">Mengembangkan komponen front-end yang dinamis menggunakan TypeScript dan Figma
+                <p class="exp-desc i18n"
+                    data-id='Mengembangkan komponen front-end yang dinamis menggunakan TypeScript dan Figma untuk proyek <a href="https://gethome.id/" target="_blank" style="color:var(--cyan);">gethome.id</a>.'
+                    data-en='Developed dynamic front-end components using TypeScript and Figma for the <a href="https://gethome.id/" target="_blank" style="color:var(--cyan);">gethome.id</a> project.'>
+                    Mengembangkan komponen front-end yang dinamis menggunakan TypeScript dan Figma
                     untuk proyek <a href="https://gethome.id/" target="_blank" style="color:var(--cyan);">gethome.id</a>.
                 </p>
                 <div class="tag-row">
@@ -672,7 +756,10 @@
                     <div class="exp-date">Sep 2022 — Mar 2023</div>
                 </div>
                 <div class="exp-loc">Depok, West Java</div>
-                <p class="exp-desc">Berkontribusi pada test automation dan pengembangan front-end menggunakan
+                <p class="exp-desc i18n"
+                    data-id="Berkontribusi pada test automation dan pengembangan front-end menggunakan Selenium."
+                    data-en="Contributed to test automation and front-end development using Selenium.">
+                    Berkontribusi pada test automation dan pengembangan front-end menggunakan
                     Selenium.</p>
                 <div class="tag-row">
                     <span class="tag">Test Automation</span>
@@ -705,7 +792,7 @@
             <h2 class="sec-title"><span class="bracket">&lt;</span>Skills<span class="bracket">/&gt;</span></h2>
 
             <div class="skill-cat">
-                <div class="skill-cat-label"><span class="num">01</span>Languages</div>
+                <div class="skill-cat-label"><span class="num">01</span><span class="i18n" data-id="Bahasa Pemrograman" data-en="Languages">Languages</span></div>
                 <div class="skill-row">
                     <div class="skill-badge" data-tip="HTML5" style="background:#e34f26;"><i class="fab fa-html5" style="color:#fff;"></i></div>
                     <div class="skill-badge" data-tip="CSS3" style="background:#1572b6;"><i class="fab fa-css3-alt" style="color:#fff;"></i></div>
@@ -716,7 +803,7 @@
             </div>
 
             <div class="skill-cat">
-                <div class="skill-cat-label"><span class="num">02</span>Frameworks & Libraries</div>
+                <div class="skill-cat-label"><span class="num">02</span><span class="i18n" data-id="Framework & Library" data-en="Frameworks & Libraries">Frameworks & Libraries</span></div>
                 <div class="skill-row">
                     <div class="skill-badge" data-tip="Laravel" style="background:#150f0c;"><i class="fab fa-laravel" style="color:#ff2d20;"></i></div>
                     <div class="skill-badge" data-tip="Vue.js" style="background:#0d1420;"><i class="fab fa-vuejs" style="color:#42b883;"></i></div>
@@ -728,14 +815,14 @@
             </div>
 
             <div class="skill-cat">
-                <div class="skill-cat-label"><span class="num">03</span>Database</div>
+                <div class="skill-cat-label"><span class="num">03</span><span class="i18n" data-id="Basis Data" data-en="Database">Database</span></div>
                 <div class="skill-row">
                     <div class="skill-badge" data-tip="MySQL" style="background:#0d1420;"><i class="fas fa-database" style="color:#00758f;"></i></div>
                 </div>
             </div>
 
             <div class="skill-cat">
-                <div class="skill-cat-label"><span class="num">04</span>Tools</div>
+                <div class="skill-cat-label"><span class="num">04</span><span class="i18n" data-id="Alat & Tools" data-en="Tools">Tools</span></div>
                 <div class="skill-row">
                     <div class="skill-badge" data-tip="Git" style="background:#f05033;"><i class="fab fa-git-alt" style="color:#fff;"></i></div>
                     <div class="skill-badge" data-tip="GitHub" style="background:#181717;"><i class="fab fa-github" style="color:#fff;"></i></div>
@@ -746,7 +833,7 @@
             </div>
 
             <div class="skill-cat">
-                <div class="skill-cat-label"><span class="num">05</span>Design & CMS</div>
+                <div class="skill-cat-label"><span class="num">05</span><span class="i18n" data-id="Desain & CMS" data-en="Design & CMS">Design & CMS</span></div>
                 <div class="skill-row">
                     <div class="skill-badge" data-tip="Figma" style="background:#0d1420;"><i class="fab fa-figma" style="color:#a259ff;"></i></div>
                     <div class="skill-badge" data-tip="Adobe XD" style="background:#470137; color:#ff61f6;">Xd</div>
@@ -766,15 +853,15 @@
                     <div class="proj-title">Inventory Management Application</div>
                     <div class="proj-date">Jun 2025 — Present · PT Primanusa Mukti Utama</div>
                     <ul class="proj-list">
-                        <li>Mengembangkan sistem manajemen inventori dengan fitur <strong>impor/ekspor
+                        <li class="i18n" data-id="Mengembangkan sistem manajemen inventori dengan fitur <strong>impor/ekspor data</strong> untuk mempercepat proses pencatatan stok." data-en="Developed an inventory management system with <strong>import/export features</strong> to speed up stock recording.">Mengembangkan sistem manajemen inventori dengan fitur <strong>impor/ekspor
                             data</strong> untuk mempercepat proses pencatatan stok.</li>
-                        <li>Merancang tabel pelacakan <strong>barang masuk dan keluar</strong> guna menjaga
+                        <li class="i18n" data-id="Merancang tabel pelacakan <strong>barang masuk dan keluar</strong> guna menjaga akurasi data persediaan." data-en="Designed <strong>incoming/outgoing goods</strong> tracking tables to maintain inventory data accuracy.">Merancang tabel pelacakan <strong>barang masuk dan keluar</strong> guna menjaga
                             akurasi data persediaan.</li>
-                        <li>Mengimplementasikan <strong>pemindaian barcode</strong> untuk mempercepat proses
+                        <li class="i18n" data-id="Mengimplementasikan <strong>pemindaian barcode</strong> untuk mempercepat proses input transaksi." data-en="Implemented <strong>barcode scanning</strong> to speed up transaction input.">Mengimplementasikan <strong>pemindaian barcode</strong> untuk mempercepat proses
                             input transaksi.</li>
-                        <li>Membangun antarmuka pengguna dengan <strong>Bootstrap</strong> dan basis data
+                        <li class="i18n" data-id="Membangun antarmuka pengguna dengan <strong>Bootstrap</strong> dan basis data <strong>MySQL</strong>." data-en="Built the user interface with <strong>Bootstrap</strong> and a <strong>MySQL</strong> database.">Membangun antarmuka pengguna dengan <strong>Bootstrap</strong> dan basis data
                             <strong>MySQL</strong>.</li>
-                        <li>Menambahkan <strong>riwayat transaksi</strong> dan <strong>activity log</strong>
+                        <li class="i18n" data-id="Menambahkan <strong>riwayat transaksi</strong> dan <strong>activity log</strong> untuk kebutuhan audit." data-en="Added <strong>transaction history</strong> and an <strong>activity log</strong> for audit purposes.">Menambahkan <strong>riwayat transaksi</strong> dan <strong>activity log</strong>
                             untuk kebutuhan audit.</li>
                     </ul>
                     <div class="tag-row">
@@ -790,11 +877,11 @@
                     <div class="proj-title">GetHome.id — Property Platform</div>
                     <div class="proj-date">Nov 2023 — Jan 2024 · Propertree.id (Internship)</div>
                     <ul class="proj-list">
-                        <li>Mengembangkan komponen front-end yang dinamis menggunakan
+                        <li class="i18n" data-id="Mengembangkan komponen front-end yang dinamis menggunakan <strong>TypeScript</strong> dan <strong>Tailwind CSS</strong>." data-en="Developed dynamic front-end components using <strong>TypeScript</strong> and <strong>Tailwind CSS</strong>.">Mengembangkan komponen front-end yang dinamis menggunakan
                             <strong>TypeScript</strong> dan <strong>Tailwind CSS</strong>.</li>
-                        <li>Mengintegrasikan <strong>API</strong> untuk menampilkan data secara dinamis
+                        <li class="i18n" data-id="Mengintegrasikan <strong>API</strong> untuk menampilkan data secara dinamis pada aplikasi." data-en="Integrated <strong>APIs</strong> to dynamically display data within the application.">Mengintegrasikan <strong>API</strong> untuk menampilkan data secara dinamis
                             pada aplikasi.</li>
-                        <li>Mengelola alur pengerjaan menggunakan <strong>Jira</strong> untuk manajemen
+                        <li class="i18n" data-id="Mengelola alur pengerjaan menggunakan <strong>Jira</strong> untuk manajemen tugas dan pelacakan progres proyek." data-en="Managed workflow using <strong>Jira</strong> for task management and project progress tracking.">Mengelola alur pengerjaan menggunakan <strong>Jira</strong> untuk manajemen
                             tugas dan pelacakan progres proyek.</li>
                     </ul>
                     <div class="tag-row">
@@ -812,12 +899,12 @@
                     <div class="proj-title">Company Profile — Samara Inti Abadi</div>
                     <div class="proj-date">2024 — Present</div>
                     <ul class="proj-list">
-                        <li>Mengembangkan website company profile dengan tampilan bersih dan profesional
+                        <li class="i18n" data-id="Mengembangkan website company profile dengan tampilan bersih dan profesional menggunakan <strong>WordPress</strong>." data-en="Developed a clean, professional company profile website using <strong>WordPress</strong>.">Mengembangkan website company profile dengan tampilan bersih dan profesional
                             menggunakan <strong>WordPress</strong>.</li>
-                        <li>Menata layout informasi layanan dan kontak agar mudah diakses pengguna.</li>
-                        <li>Mengintegrasikan <strong>WooCommerce</strong> untuk kebutuhan penjualan
+                        <li class="i18n" data-id="Menata layout informasi layanan dan kontak agar mudah diakses pengguna." data-en="Organized the services and contact information layout for easy user access.">Menata layout informasi layanan dan kontak agar mudah diakses pengguna.</li>
+                        <li class="i18n" data-id="Mengintegrasikan <strong>WooCommerce</strong> untuk kebutuhan penjualan daring." data-en="Integrated <strong>WooCommerce</strong> for online sales needs.">Mengintegrasikan <strong>WooCommerce</strong> untuk kebutuhan penjualan
                             daring.</li>
-                        <li>Menerapkan strategi <strong>SEO</strong> dan analitik untuk meningkatkan
+                        <li class="i18n" data-id="Menerapkan strategi <strong>SEO</strong> dan analitik untuk meningkatkan visibilitas online." data-en="Implemented <strong>SEO</strong> and analytics strategies to improve online visibility.">Menerapkan strategi <strong>SEO</strong> dan analitik untuk meningkatkan
                             visibilitas online.</li>
                     </ul>
                     <div class="tag-row">
@@ -834,9 +921,9 @@
                     <div class="proj-title">Insentif MGI — Dashboard Internal</div>
                     <div class="proj-date">Internal System</div>
                     <ul class="proj-list">
-                        <li>Mengembangkan sistem/dashboard internal untuk pengelolaan
+                        <li class="i18n" data-id="Mengembangkan sistem/dashboard internal untuk pengelolaan <strong>insentif karyawan</strong> menggunakan <strong>Laravel</strong>." data-en="Developed an internal system/dashboard for managing <strong>employee incentives</strong> using <strong>Laravel</strong>.">Mengembangkan sistem/dashboard internal untuk pengelolaan
                             <strong>insentif karyawan</strong> menggunakan <strong>Laravel</strong>.</li>
-                        <li>Membangun antarmuka dengan <strong>Tailwind CSS</strong> dan basis data
+                        <li class="i18n" data-id="Membangun antarmuka dengan <strong>Tailwind CSS</strong> dan basis data <strong>MySQL</strong> untuk pengelolaan data yang efisien." data-en="Built the interface with <strong>Tailwind CSS</strong> and a <strong>MySQL</strong> database for efficient data management.">Membangun antarmuka dengan <strong>Tailwind CSS</strong> dan basis data
                             <strong>MySQL</strong> untuk pengelolaan data yang efisien.</li>
                     </ul>
                     <div class="tag-row">
@@ -853,10 +940,10 @@
                     <div class="proj-title">GooBook — Book Search App</div>
                     <div class="proj-date">Jul 2023</div>
                     <ul class="proj-list">
-                        <li>Mengembangkan aplikasi pencarian buku menggunakan <strong>React.js</strong>.</li>
-                        <li>Mengintegrasikan <strong>Open Library Search API</strong> untuk menampilkan
+                        <li class="i18n" data-id="Mengembangkan aplikasi pencarian buku menggunakan <strong>React.js</strong>." data-en="Developed a book search application using <strong>React.js</strong>.">Mengembangkan aplikasi pencarian buku menggunakan <strong>React.js</strong>.</li>
+                        <li class="i18n" data-id="Mengintegrasikan <strong>Open Library Search API</strong> untuk menampilkan data buku secara real-time." data-en="Integrated the <strong>Open Library Search API</strong> to display book data in real time.">Mengintegrasikan <strong>Open Library Search API</strong> untuk menampilkan
                             data buku secara real-time.</li>
-                        <li>Menyediakan fitur pencarian dan filter untuk mempermudah pengguna menemukan
+                        <li class="i18n" data-id="Menyediakan fitur pencarian dan filter untuk mempermudah pengguna menemukan buku yang relevan." data-en="Provided search and filter features to help users find relevant books more easily.">Menyediakan fitur pencarian dan filter untuk mempermudah pengguna menemukan
                             buku yang relevan.</li>
                     </ul>
                     <div class="tag-row">
@@ -872,9 +959,9 @@
                     <div class="proj-title">Shop — PT Primanusa Mukti Utama</div>
                     <div class="proj-date">PT Primanusa Mukti Utama</div>
                     <ul class="proj-list">
-                        <li>Mengembangkan platform toko online dengan fokus pada
+                        <li class="i18n" data-id="Mengembangkan platform toko online dengan fokus pada <strong>monitoring status pesanan</strong>." data-en="Developed an online store platform focused on <strong>order status monitoring</strong>.">Mengembangkan platform toko online dengan fokus pada
                             <strong>monitoring status pesanan</strong>.</li>
-                        <li>Membangun antarmuka dengan <strong>Tailwind CSS</strong> dan basis data
+                        <li class="i18n" data-id="Membangun antarmuka dengan <strong>Tailwind CSS</strong> dan basis data <strong>MySQL</strong>." data-en="Built the interface with <strong>Tailwind CSS</strong> and a <strong>MySQL</strong> database.">Membangun antarmuka dengan <strong>Tailwind CSS</strong> dan basis data
                             <strong>MySQL</strong>.</li>
                     </ul>
                     <div class="tag-row">
@@ -891,12 +978,12 @@
                     <div class="proj-title">Company Profile — PT Primanusa Mukti Utama</div>
                     <div class="proj-date">2024 — Present</div>
                     <ul class="proj-list">
-                        <li>Membangun website company profile yang responsif menggunakan
+                        <li class="i18n" data-id="Membangun website company profile yang responsif menggunakan <strong>WordPress</strong>." data-en="Built a responsive company profile website using <strong>WordPress</strong>.">Membangun website company profile yang responsif menggunakan
                             <strong>WordPress</strong>.</li>
-                        <li>Menyusun struktur halaman layanan untuk mempermudah navigasi pengguna.</li>
-                        <li>Mengintegrasikan <strong>WooCommerce</strong> untuk mendukung kebutuhan
+                        <li class="i18n" data-id="Menyusun struktur halaman layanan untuk mempermudah navigasi pengguna." data-en="Structured service pages to improve user navigation.">Menyusun struktur halaman layanan untuk mempermudah navigasi pengguna.</li>
+                        <li class="i18n" data-id="Mengintegrasikan <strong>WooCommerce</strong> untuk mendukung kebutuhan e-commerce perusahaan." data-en="Integrated <strong>WooCommerce</strong> to support the company's e-commerce needs.">Mengintegrasikan <strong>WooCommerce</strong> untuk mendukung kebutuhan
                             e-commerce perusahaan.</li>
-                        <li>Melakukan optimasi konten dan metadata untuk meningkatkan performa
+                        <li class="i18n" data-id="Melakukan optimasi konten dan metadata untuk meningkatkan performa <strong>SEO</strong>." data-en="Optimized content and metadata to improve <strong>SEO</strong> performance.">Melakukan optimasi konten dan metadata untuk meningkatkan performa
                             <strong>SEO</strong>.</li>
                     </ul>
                     <div class="tag-row">
@@ -950,6 +1037,34 @@
         const navLinks = document.getElementById('navLinks');
         navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
         navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+        let currentLang = 'id';
+        let currentTheme = 'dark';
+
+        function applyLang(lang) {
+            document.querySelectorAll('.i18n').forEach(el => {
+                const content = el.dataset[lang];
+                if (content) el.innerHTML = content;
+            });
+            document.getElementById('langToggle').textContent = lang === 'id' ? 'EN' : 'ID';
+            document.documentElement.setAttribute('lang', lang);
+            currentLang = lang;
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            const icon = document.querySelector('#themeToggle i');
+            icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+            currentTheme = theme;
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            applyLang(currentLang === 'id' ? 'en' : 'id');
+        });
+
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
     </script>
 </body>
 
